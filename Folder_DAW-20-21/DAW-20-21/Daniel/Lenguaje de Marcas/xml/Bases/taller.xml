@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taller [
+  <!ELEMENT taller (coche_reparado+)>    
+    <!ELEMENT coche_reparado (matricula, modelo*, propietario, mecanico+)>
+        <!ATTLIST coche_reparado id_coche NMTOKEN #REQUIRED>
+            <!ELEMENT matricula (#PCDATA)>
+            <!ELEMENT modelo (#PCDATA)>
+            <!ELEMENT propietario (nombre)>
+                <!ELEMENT nombre (#PCDATA)>
+            <!ELEMENT mecanico (nombre_mecanico+,trabajos_realizados+)>
+                <!ATTLIST mecanico id_mecanico ID #REQUIRED>
+                    <!ELEMENT nombre_mecanico (#PCDATA)>
+                    <!ELEMENT trabajos_realizados (trabajo+)>
+                        <!ELEMENT trabajo (concepto, fecha_inicio?, fecha_fin?,costo)>
+                            <!ATTLIST trabajo id_trabajo NMTOKENS #REQUIRED>
+                                <!ELEMENT concepto (#PCDATA)>
+                                <!ELEMENT fecha_inicio (#PCDATA)>
+                                <!ELEMENT fecha_fin (#PCDATA)>
+                                <!ELEMENT costo (#PCDATA)>
+                                  <!ATTLIST  costo moneda CDATA #REQUIRED>   
+]>
+<taller>
+  <coche_reparado id_coche="11112">
+  <matricula>4589GXD</matricula>
+  <modelo>Volskwagen Golf</modelo>
+  <propietario>
+    <nombre>Tomas</nombre>
+  </propietario>
+  
+    <mecanico id_mecanico="ABC123">
+      <nombre_mecanico>Juan Fernandez</nombre_mecanico>
+       <trabajos_realizados>
+          <trabajo id_trabajo="1A">
+              <concepto>Mantenimiento</concepto>
+              <fecha_inicio>19/07/2010</fecha_inicio>
+              <fecha_fin>23/07/2010</fecha_fin>
+              <costo moneda="€">100</costo>
+          </trabajo>
+          <trabajo id_trabajo="2CA">
+              <concepto>Cambio de Aceite</concepto>
+              <fecha_inicio>21/11/2010</fecha_inicio>
+              <fecha_fin>21/11/2010</fecha_fin>
+              <costo moneda="€">60</costo>
+          </trabajo> 
+          <trabajo id_trabajo="4F">
+              <concepto>Limpieza Completa</concepto>
+              <fecha_inicio>16/06/2010</fecha_inicio>
+              <fecha_fin>16/06/2010</fecha_fin>
+              <costo moneda="€">95</costo>
+          </trabajo> 
+       </trabajos_realizados> 
+    </mecanico>
+    
+  </coche_reparado>
+</taller>

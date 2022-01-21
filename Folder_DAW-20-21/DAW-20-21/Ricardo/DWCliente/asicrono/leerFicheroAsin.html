@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p><input type="file" name="file[]" id=""></p>
+    <p id="palabra">Contenido</p>
+    <button disabled>Pintar Palabra</button>
+
+    <script>
+        document.querySelector('input').addEventListener('change', leerFichero);
+        let palabra;
+        function leerFichero(e){
+            let fichero = e.target.files[0];
+            let lector = new FileReader;
+
+            lector.addEventListener('load', function(e){
+                palabra = e.target.result.split(',')[0];
+                document.querySelector('button').removeAttribute('disabled');
+            });
+            lector.readAsText(fichero);
+        }
+
+        document.querySelector('button').addEventListener('click', ()=>{
+            document.getElementById('palabra').textContent=palabra;
+        });
+    </script>
+</body>
+</html>

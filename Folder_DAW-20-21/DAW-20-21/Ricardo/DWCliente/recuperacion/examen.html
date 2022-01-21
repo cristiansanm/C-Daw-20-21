@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
+    <title>Examen</title>
+</head>
+<body>
+   <h2>Examen de Recuperacion</h2>
+   <div class="cuerpo">
+           
+        <div class="datos">
+            <h3>Datos</h3>
+            
+            <div class="contenedorDiv">
+            </div>
+       </div>
+       <div class="controles">
+           <h3>Controles</h3>
+            <form>    
+                <label for="columnas">Columnas:</label>
+                <p><input type="number" name="columnas" id="columnas"></p>
+                <label for="filas">Filas:</label>
+                <p><input type="number" name="filas" id="filas"></p>
+                
+            </form>
+            <form>    
+                <label for="texto">Contenido</label>
+                <p><input type="text" name="texto" id="texto"></p>
+            </form>
+            <p><button id="crearDiv">Crear</button></p>
+            <div class="imagenes">
+                <div class="img1"><img src="img/logo1.png" alt=""></div>
+                <div class="img2"><img src="img/logo2.png" alt=""></div>
+                <div class="img3"><img src="img/logo3.png" alt=""></div>
+            </div>
+            
+       </div>
+   </div> 
+
+
+   <script>
+        var botonCrear = document.getElementById('crearDiv');
+        
+        var dato = document.getElementById('texto').value;
+        document.getElementsByTagName('form')[1].reset();
+        
+        var img1 = document.getElementsByTagName('img')[0];
+        var img2 = document.getElementsByTagName('img')[1];
+        var img3 = document.getElementsByTagName('img')[2];
+        
+
+        function addContenido(e){
+            var div = e.currentTarget;
+            let texto = document.getElementById('texto').value;
+            let p = document.createElement('p');
+            p.textContent=texto;
+            div.appendChild(p);
+            document.getElementsByTagName('form')[1].reset();
+        }
+
+        function empezarArrastre(e){
+            //Añade una clase para que sea tratada en el Draggable y el Drop
+            e.target.classList.add('arrastrado');
+        }
+
+        function dragOver(e){
+            //Evita que suceda alguna funcion por default antes de hacer el drop cuando colocamos el drag
+            e.preventDefault();
+        }
+        function dropArrastre(e) {
+            //Coge el elemento que tenga la clase arrastrado para movilizarlo
+            let arrastrado = document.getElementsByClassName('arrastrado')[0];
+            //El div a dónde se insertará los datos del drag
+            let contenedorDrop = e.target;
+            
+            //Inserta el elemento con la clase arrastrado en el div target
+            contenedorDrop.appendChild(arrastrado);
+            //Le quita la clase al div que ya no tiene los datos
+            arrastrado.classList.remove('arrastrado');
+
+        }
+        function crearDivs(e){
+            
+            var columna = document.getElementById('columnas').value;
+            var fila = document.getElementById('filas').value;
+            var contenedor = document.getElementsByClassName('contenedorDiv')[0];
+            
+            
+            while(contenedor.firstChild){
+                contenedor.removeChild(contenedor.firstChild);
+            }
+
+            columna = parseInt(columna);
+            fila = parseInt(fila);
+
+            for (let i = 0; i<fila; i++){
+                let nuevoDivCont = document.createElement('div');
+                nuevoDivCont.classList.add('divFila');
+                contenedor.appendChild(nuevoDivCont);
+            }
+
+            let filaContent = contenedor.children;
+
+            for(f of filaContent){
+                for(let j=0; j<columna; j++){
+                    let nuevoDiv = document.createElement('div');
+                    nuevoDiv.classList.add('divNuevo');
+                    f.appendChild(nuevoDiv)
+                }
+            }
+            document.getElementsByTagName('form')[0].reset();
+            
+            var divs = document.getElementsByClassName('divNuevo');
+            
+            img1.addEventListener('dragstart',empezarArrastre);
+            img2.addEventListener('dragstart',empezarArrastre);
+            img3.addEventListener('dragstart',empezarArrastre);
+            
+            for(let d of divs){
+                d.addEventListener('click', addContenido);
+                d.addEventListener('dragover', dragOver)
+                d.addEventListener('drop', dropArrastre)
+            }
+            
+            
+        }
+        img1.addEventListener('dragover', dragOver);
+        botonCrear.addEventListener('click', crearDivs)
+        
+        
+        
+   </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puntos</title>
+</head>
+<body>
+    <script>
+        function Punto(x, y){
+            this.x=isNaN(x) ? 0 : x;
+            this.y=isNaN(y) ? 0 : y;
+            this.mover=(x,y)=>{
+                this.x=x;
+                this.y=y;
+                this.x=isNaN(x) ? this.x : x;
+                this.y=isNaN(y) ? this.y : y;
+            };
+            // this.copia=function(){
+            //     return new Punto(this.x,this.y);
+            // }
+            this.copia=()=>new Punto(this.x,this.y);
+            this.iguales=(p)=>((this.x==p.x) && (this.y==p.y)) ? true : false;
+            this.distancia=(p)=>{
+                return Math.sqrt((Math.pow((p.x-this.x),2)+Math.pow((p.y-this.y),2)),2)
+            }
+            this.toString=()=>{
+            return 'El punto esta en x='+this.x+' y en y='+this.y;
+        }
+
+        }
+        
+        var p1=new Punto(5,9);
+        console.log(p1.toString());
+    </script>
+</body>
+</html>

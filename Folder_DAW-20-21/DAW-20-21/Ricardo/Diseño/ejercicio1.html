@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio</title>
+    <script src="https://kit.fontawesome.com/b3094996d0.js" crossorigin="anonymous"></script>
+    <style>
+        /*Animación para el giro permanente de la imagen en la parte superior derecha*/
+        @keyframes rotacionimagen{
+            from{
+                transform: rotate(0deg);
+            }
+            25%{
+                transform: rotate(90deg);
+            }
+            50%{
+                transform: rotate(180deg);
+            }
+            75%{
+                transform: rotate(270deg);
+            }
+            to{
+                transform: rotate(360deg)
+            }
+            
+        }
+       /*Todo el contenedor de la página*/
+        .cuerpo{
+            float: left;
+            margin: 2% 10%;
+            width: 80%;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: rgb(204, 169, 238);
+        }
+        /*La cabecera que contiene el formulario y la imágen girando*/
+        .cabecera{
+            float:left;
+            margin: 2% 5%;
+            width: 90%;
+        }
+        /*Estilo de el formulario*/
+        .cabecera fieldset{
+            float: left;
+            width:70%;
+            margin-left: 2%;
+            margin-top: 5%;
+            font-size: 1em;
+            border-radius: 5px;
+            color: white;
+            background: repeating-linear-gradient(45deg, transparent, rgb(92, 21, 158) 0%, rgb(114, 58, 187) 50%, violet 100%);
+            box-shadow:rgb(114, 58, 187);
+        }
+        /*Ubicacion del boton*/
+        .cabecera form input{
+            float: right;
+            margin-right: 5%;
+            margin-top: 2%;
+            width:30%;
+        }
+        /*Tamaño de los inputs*/
+        input{
+            width: 30%;
+        }
+        /*Apariencia de los inputs cuando no son validos*/
+        input:invalid{
+            border-color: red;
+        }
+        /*Margen entre cada input cogiendo de referencia el primero*/
+        input[type="text"]{
+            margin-right: 2%;
+        }
+        /*Identificador de la imagen que rota*/
+        #img1{
+            float:right;
+            width: 15%;
+            height: 100%;
+            margin-right: 2%;
+            animation: rotacionimagen 4s infinite ease-in-out;
+        }
+        /*Tamaño general de la imagen*/
+        img{
+            width:100%;
+            height: 100%;
+        }
+        /*Estilo del contenido del centro donde esta el texto*/
+        .contenido{
+            float: left;
+            width:90%;
+            margin-left: 5%;;
+            
+            background: url(https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png)left no-repeat,
+                        url(https://www.campusmovil.com.mx/wp-content/uploads/2019/06/google-docs-icon.png)center no-repeat,
+                        url(https://www.google.com/images/branding/product/2x/maps_96in128dp.png)right no-repeat;
+            
+        }
+        /*Estilo de los parrafos dentro del texto*/
+        .contenido p{
+            font-size: 1em;
+            border-radius: 5px;
+            background: linear-gradient(20deg, rgba(144,116,233,0.5) 0%,rgba(90, 35, 90, 0.5) 25%, rgba(100, 80, 165, 0.5) 50%, rgba(159, 138, 228, 0.5) 75%, rgba(85, 65, 151, 0.5) 100%);
+            box-shadow: 3px 3px 3px violet;
+            padding: 2%;
+        }
+        /*Comportamiento si se pone el cursor encima del texto*/
+        .contenido p:hover{
+            transition: all 0.5s ease-in-out 0s;
+            border-radius: 15px;
+            background: linear-gradient(20deg, rgba(118, 50, 196, 0.5) 0%,rgba(138, 79, 177, 0.5) 25%, rgba(171, 151, 238, 0.5) 50%, rgba(138, 79, 177, 0.5) 75%, rgba(118, 50, 196, 0.5) 100%);
+            box-shadow: 3px 3px 3px rgb(150, 56, 150);
+            padding: 2%;
+            color:rgb(201, 201, 201);
+            color:aliceblue;
+        }/*Estilo del pie de pagina*/
+        .pie{
+            float:left;
+            width: 90%;
+            margin: 5% 5%;
+            border-radius: 5px;
+            box-shadow: 3px 3px 3px rgb(134, 43, 134);
+            background: linear-gradient(0deg, rgb(60, 5, 112) 0%, rgb(89, 11, 161) 25%, rgb(126, 64, 206) 50%,rgb(89, 11, 161) 75%, rgb(60, 5, 112) 100%);
+        }
+        /*Estilo de los iconos puestos en el pie de pagina*/
+        .pie ul li{
+            font-size: 5em;
+            list-style:none;
+            display: inline;
+            margin: 0 5%;
+            color: white;
+        }
+        /*Comportamiento de los iconos cuando el cursor esta sobre los mismos*/
+        .pie ul li:hover{
+            transition: all 0.5s linear 0s;
+            z-index: 10;
+            font-size: 7em;
+            background-color: rgb(189, 88, 248);
+            border-radius:20px;
+
+        }
+    </style>
+</head>
+<body>
+    <!--Contendedor General-->
+    <div class="cuerpo">
+        <!-- Cabecera que contiene el formulario y la imagen que rota -->
+        <div class="cabecera">
+            <!-- Formulario -->
+            <fieldset>
+                <label for="usuario">Usuario:</label>
+                <input type="text" name="usuario" id="usuario" placeholder="Introducir el nombre de usuario" pattern="[a-z]{8}" required>
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" name="contraseña" id="contraseña" placeholder="Introduce la contraseña" patter="[0-9]{5}"required>
+                <form action="https://google.com">
+                    <input type="submit" value="Enviar" formtarget="_blank" />
+                </form>
+                
+            </fieldset>
+            <!-- Imagen animada -->
+            <div id="img1">
+                <img src="https://lh5.ggpht.com/tq3WqEUxtRyBn-d_0t3j6WKNHuJDrmLq-FE3GAYrsAMQFIaS7FIgRLfzzql2SvfvLqto=w300" alt="fotos">
+            </div>
+        </div>
+        <!-- Contenido del parrafo -->
+        <div class="contenido">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ullam unde ipsam reprehenderit esse assumenda eligendi provident aliquid? Amet numquam hic doloremque iusto architecto illum optio maxime atque vel a?
+            Culpa consequuntur eos tempore officia cupiditate blanditiis libero sunt, quidem reprehenderit et a facilis laudantium ad quos ut, optio repudiandae recusandae nesciunt quibusdam corporis accusamus illo voluptatem alias soluta. Saepe?
+            Quibusdam odit officiis unde, itaque aliquam tenetur numquam quidem ratione est dolorum, molestias deleniti quasi cupiditate, hic exercitationem voluptas! Adipisci natus qui libero tempore in assumenda, quasi excepturi labore ducimus?
+            Non illo fugiat pariatur sint iusto nesciunt totam repellendus aperiam sed nulla aliquid officiis modi, voluptate necessitatibus eligendi et blanditiis natus veritatis quo est harum laboriosam! Tempore ex ea voluptatem.
+            Similique eligendi dolorem consequatur, facilis dignissimos iusto eius tenetur aliquid dolorum hic, cum totam eum delectus accusamus. Quos facilis illum nihil voluptatibus voluptas, alias explicabo minima non sed obcaecati reiciendis!
+            In laboriosam dolore libero! Ad excepturi itaque atque mollitia facere laborum impedit? Neque perferendis voluptatum officia velit iusto aspernatur accusantium iure tempore et temporibus, voluptates nam facere dolores ducimus necessitatibus?
+            Hic non, atque architecto beatae, sapiente blanditiis officiis dignissimos et delectus corporis temporibus nulla quae assumenda eos rem. Odio eaque sequi cumque atque nemo unde voluptatibus delectus maiores facere nam.
+            Tempora perferendis culpa, aspernatur quae aliquid rerum inventore sunt sint quod laboriosam optio nostrum, nesciunt consectetur at soluta sit! Iure laborum ullam eaque, sed architecto tempora. Nisi in alias nihil.
+            Magnam commodi libero, dicta delectus minus quo quisquam, at rem aliquid, blanditiis voluptas accusantium odit sint nostrum eaque exercitationem ea quae aspernatur laudantium facilis? Ad ratione consequatur sint. Assumenda, sunt.
+            Nihil, dolor quisquam placeat atque, architecto ad enim ducimus doloremque corporis sint quae debitis tempora delectus sequi nesciunt quam ea illum! Aut omnis eius voluptas cum molestias maiores, aspernatur vitae.</p>
+        </div>
+        <!-- Pie de pagina -->
+        <div class="pie">
+            <!-- Lista puesta en horizontal para usar los iconos -->
+            <ul>
+                <li><em class="fab fa-apple"></em></li>
+                <li><em class="fas fa-blender-phone"></em></li>
+                <li><em class="fab fa-reddit"></em></li>
+                <li><em class="fab fa-blogger-b"></em></li>
+                <li><em class="fab fa-google"></em></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

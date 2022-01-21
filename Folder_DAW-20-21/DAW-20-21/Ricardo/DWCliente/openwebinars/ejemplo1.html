@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Objeto</title>
+</head>
+<body>
+    <script>
+        /*var jugador={
+            fuerza:1,
+            incrementarFuerza: function(){
+                this.fuerza += 5;
+            },
+            consultarFuerza: function(){
+                console.log("La fuerza es de " + this.fuerza);
+            }
+        }
+        jugador.consultarFuerza();
+        jugador.incrementarFuerza();
+        jugador.consultarFuerza();*/
+        var numeros=[0,1,2,3,4,5,6,7,8,9,10,11,12];
+        numeros.forEach(element => {
+            if(element%2==0 && element!=0){
+                console.log(element);
+            }
+        });
+        var suma=0;
+        for(let i=0; i<numeros.length; i++){
+            suma+=numeros[i];
+        }
+        console.log('La suma de los elementos del array es '+suma);
+    </script>
+</body>
+</html>

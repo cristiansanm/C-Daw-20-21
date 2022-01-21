@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        #contenedor{
+            margin: 0 auto 0 auto;
+            width: 1000px;
+        }
+        #principal{
+            padding: 3px;
+            margin-top:20px;
+            border: 1px dashed red;
+            
+        }
+        #principal h4{
+            margin: 2em 0 1em 0;
+        }
+        #listaseguida{
+            list-style: none;
+        }
+        #listaseguida li{
+            display: inline;
+            border-bottom: 3px solid red;
+            background-color: blueviolet;
+            color:whitesmoke;
+            
+        }
+        #listaseguida li:hover{
+            background-color:mediumpurple;
+            color:azure;
+            border-bottom: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <div id="principal">
+            <ul>Principal
+                <li>Esta</li>
+                <li>Lista</li>
+                <li>Normal</li>
+            </ul>
+            
+            <ul id="listaseguida">
+                <hr/>
+                <h4>Seguida</h4>
+                <li>Esto</li>
+                <li>es</li>
+                <li>una</li>
+                <li>Lista</li>
+                <li>Seguida</li>
+                <li>Tambien</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

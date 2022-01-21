@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .moto{
+            background-color:rgb(108, 108, 216);
+
+        }
+        .coche{
+            background-color:lightgray;
+        }
+        .triatleta{
+            background-color:tomato;
+        }
+        .atleta{
+            background-color:aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="triatleta">Ivan Reña</li>
+        <li class="coche">Daniel Ricciardo</li>
+        <li class="atleta">Eddie Lawson</li>
+        <li class="moto">Yago Lamela</li>
+        <li class="triatleta">Campi Herrero</li>
+        <li class="moto">Mario Mola</li>
+    </ul>
+    <input name="boton" class="boton" type="submit" value="Empezar">
+    <p class="moto">mi moto</p>
+    <script>
+        let triatleta=document.getElementsByClassName("triatleta");
+        console.log(triatleta);
+        let todosLi=document.querySelectorAll("li");
+        console.log(todosLi);
+        let todoslosMoto=document.querySelectorAll("li.moto");
+        console.log(todoslosMoto);
+
+        for (let li of todosLi){
+            console.log(li.getAttribute("class"));
+            // li.setAttribute("class","deportistas");
+            // li.removeAttribute("class");
+            // li.toggleAttribute("class","moto");
+        }
+        let boton=document.querySelectorAll('input');
+        // 
+        for(let atribute of boton[0].attributes){
+            console.log(atribute.name, "y su valor es", atribute.value)
+        }
+    </script>
+    
+</body>
+</html>

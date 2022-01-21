@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
+    <title>Document</title>
+    <style>
+        .cuerpo{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 80%;
+            margin: 2% 10%;
+        }
+        .datos{
+            width:70%;
+            background-color:gray;
+        }
+        .contenedorDiv{
+            width: 100%;
+            display:flex;
+            flex-direction: column;
+            
+        }
+        h2, h3{
+            margin-top:0;
+            color: white;
+            font-weight: bold;
+            background-color: black;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .controles{
+            width:28%;
+            margin-left:2%;
+
+        }
+        .controles form{
+            padding: 1%;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .divNuevo{
+            background-color:bisque;
+            width: 15%;
+            height: 100%;
+        }
+        .divFila{
+            display: flex;
+            height: 5em;
+            justify-content: space-around;
+            margin-bottom: 5%;
+        }
+        #datosJson{
+            margin-top: 3%;
+            
+            display: none;
+            border: 1px solid black;
+            padding: 2%;
+        }
+    </style>
+</head>
+<body>
+    <div class="cuerpo">
+         
+        <div class="datos">
+            <h3>Datos</h3>
+            <div class="contenedorDiv">
+            </div>
+       </div>
+       <div id="datosJson">
+        <h3>Datos del Json</h3>    
+            <form>
+                <input type="file" name="files[]" id="files">
+                
+            </form>
+       <div id="nuevosDatos"></div>
+       
+       </div>
+
+       <div class="controles">
+        <h3>Controles</h3>
+        <form>    
+            <label for="columnas">Columnas:</label>
+            <p><input type="number" name="columnas" id="columnas"></p>
+            <label for="filas">Filas:</label>
+            <p><input type="number" name="filas" id="filas"></p>
+            
+        </form>
+        <p><button id="crearDiv">Crear</button></p>
+           
+       </div>
+   </div> 
+    <script>
+        var botonCrear = document.getElementById('crearDiv');
+        
+        document.getElementsByTagName('form')[0].reset();
+        document.getElementsByTagName('form')[1].reset();
+
+        function empezarArrastre(e){
+            e.currentTarget.setAttribute('id', 'viajero');
+            e.dataTransfer.setData("text", e.target.id);
+        }
+
+        function dragOver(ev){
+            ev.preventDefault();
+        }
+
+        function dropArrastre(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text/plain");
+            ev.currentTarget.appendChild(document.getElementById(data));
+            document.getElementById(data).removeAttribute('draggable');
+            document.getElementById(data).removeAttribute('id');
+        }
+
+        function crearDivs(e){
+            
+            var columna = document.getElementById('columnas').value;
+            var fila = document.getElementById('filas').value;
+            var contenedor = document.getElementsByClassName('contenedorDiv')[0];
+            
+            
+            while(contenedor.firstChild){
+                contenedor.removeChild(contenedor.firstChild);
+            }
+
+            columna = parseInt(columna);
+            fila = parseInt(fila);
+
+            for (let i = 0; i<fila; i++){
+                let nuevoDivCont = document.createElement('div');
+                nuevoDivCont.classList.add('divFila');
+                contenedor.appendChild(nuevoDivCont);
+
+            }
+
+            let filaContent = contenedor.children;
+
+            for(f of filaContent){
+                for(let j=0; j<columna; j++){
+                    let nuevoDiv = document.createElement('div');
+                    nuevoDiv.classList.add('divNuevo');
+                    nuevoDiv.addEventListener('dragover', dragOver)
+                    nuevoDiv.addEventListener('drop', dropArrastre);
+                    f.appendChild(nuevoDiv)
+                }
+            }
+            document.getElementsByTagName('form')[1].reset();
+            document.getElementById('datosJson').style.display = "block";
+            
+            
+            
+        }
+        botonCrear.addEventListener('click', crearDivs)
+
+        document.querySelector('#files').addEventListener('change',DevolverTexto);
+        function leerFichero(e){
+            return new Promise((res,rej)=>{
+                let fichero=e.target.files[0];
+                let lector=new FileReader()
+                var divs = document.getElementsByClassName('divNuevo');
+            
+                lector.addEventListener('load',function(e){
+                    let texto=e.target.result;
+                    res(texto);
+                })
+                lector.readAsText(fichero)
+            })    
+        }
+        let nuevosDatos = document.getElementById('nuevosDatos');
+
+        async function DevolverTexto(e){
+            ContenidoFichero =await leerFichero(e); 
+            console.log(JSON.parse(ContenidoFichero));
+            let json = JSON.parse(ContenidoFichero);
+            for(e of json){
+                let divNuevo = document.createElement('div');
+                divNuevo.classList.add('divNuevo');
+                divNuevo.setAttribute('draggable', true);
+                divNuevo.addEventListener('dragstart', empezarArrastre);
+                divNuevo.textContent = e.nombre;
+                //divNuevo.innerHTML=`<span class="nombre">{e.nombre}<span class="apllidos">{e.ape</`;
+                nuevosDatos.appendChild(divNuevo)
+            }
+            document.getElementsByTagName('form')[1].reset();
+        }
+    </script>
+</body>
+</html>

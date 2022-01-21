@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trasformaciones</title>
+    <style>
+        div{
+            height: 100px;
+            width: 200px;
+            border: solid 1px black;
+            border-radius: 5%;
+            float:left;
+            margin-left: 5%;
+            
+            margin-right: 5%;
+
+        }
+        .escalar:hover{
+            transform: scale(0.5);
+        }
+        .trasladar:hover{
+            transform: translate(100px, 20px)
+        }
+        .rotar:hover{
+            transform: rotate(45deg);
+        }
+        .sesgar:hover{
+            transform: skew(5deg,10deg);
+        }
+        .matrix:hover{
+            transform: matrix(2.5,0.1,2.5,1.4,50,0);
+        }
+        .cambiarEje:hover{
+            transform: rotate(-10deg);
+            transform-origin: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="escalar">Este div cambiara de tamaño</div>
+    <div class="trasladar">Este div se trasladara</div>
+    <div class="rotar"> Este div se gira</div>
+    <div class="sesgar">Este div lo retuerzo</div>
+    <div class="matrix">Este div es matrix</div>
+    <div class="cambiarEje">Este div trnasforma desde otro eje</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .centrado{
+            margin-left: 40%;
+        }
+        .josh{
+            color:red;
+        }
+        .prince{
+            color: purple;
+        }
+        .margen{
+            margin-left: 20px;
+        }
+        .letra{
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+
+    
+    <div class="prince letra">
+        <h2>Prince</h2>
+        <h3>Nothing compares 2 U</h3>
+        <p>It's been seven hours and fifteen days</p>
+        <p>Since you took your love away</p>
+        <p>I go out every night and sleep all day</p>
+        <p>Since you took your love away</p>
+    </div>
+    <div class="josh margen" title="QOTSA">
+        <h2>Josh Homme</h2>
+        <h3>No one knows</h3>
+        <p>We get some rules to follow, that and this, these and those</p>
+        <p>No one knows</p>
+        <p>We get this pills to swallow, how they stick in your throat</p>
+        <p>Taste like gold</p>
+    </div>
+</div>
+    <script>
+        let losH2=document.getElementsByTagName("h2");
+
+        //1. Insertar la clase centrado en los h2
+        for(let h2 of losH2){
+            h2.setAttribute("class", "centrado");
+        }
+        //2. Describir los elementos en un div 
+        let losDIV=document.getElementsByTagName("div");
+
+        for(let div of losDIV){
+            for(let a of div.attributes){
+                console.log(a.name, ": ", a.value);
+            }
+        }
+        //3. Cambia el valor de un atributo
+        for(let div of losDIV){
+            if(div.hasAttribute("title")){
+                div.setAttribute("title", "Modificado");
+            }
+        }
+        //4. añade estilo a una clase
+        document.querySelectorAll(".prince")[0].style.border="1px solid red";
+        document.getElementsByClassName("prince")[0].style.padding="3em"
+        //5.añade una clase a un elemento con los parametros especificados
+        let h3eric=document.querySelectorAll(".prince h3");
+        h3eric[0].classList.add('margen');
+        //6.Elimina una clase dentro del mismo elemento
+        h3eric[0].parentNode.classList.remove('letra');
+        //7. Pone en negrita la primera palabra del primer p de un div
+        let misP=document.querySelectorAll('div p:first-of-type');
+
+        for(let p of misP){
+            var aux=p.innerHTML.split(" ");
+            aux[0]="<strong>"+aux[0]+"</strong>";
+            p.innerHTML=aux.join(" ");
+
+        }
+
+        //8. añade al final otro div con otro h2 y varios p
+
+        let capa=document.getElementsByClassName("contenedor")[0];
+        let nuevoDiv=document.createElement("div");
+        //nuevoDiv.innerHTML="<h2>h2</h2><h3>h3</h3><p>1</p><p>2</p><p>3</p>";
+        let nuevoh2=document.createElement("h2");
+        nuevoh2.innerHTML="El h2";
+        let nuevoh3=document.createElement("h3");
+        nuevoh3.innerHTML="El h3";
+        capa.appendChild(nuevoDiv);
+        nuevoDiv.appendChild(nuevoh2);
+        nuevoDiv.appendChild(nuevoh3);
+
+        for(let i=0; i<=4; i++){
+            let p=document.createElement("p");
+            p.innerHTML="El nuevo p: "+i;
+            nuevoDiv.appendChild(p);
+        }
+    </script>
+</body>
+</html>

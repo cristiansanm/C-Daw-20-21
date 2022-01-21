@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadenas</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <div class="container mt-3">
+
+        <div class="row">
+            <div class="bg-primary bg-gradient border border-2 rounded-3">
+                <h1 class="text-center p-2 fw-bold text-white">Ingresar una frase</h1>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="d-flex justify-content-center mt-3"><input type="text" name="cadena" id="cadena"></div>
+            <p></p>
+            <button id="introducir" class="btn btn-dark">Introducir</button>
+        </div>
+
+        <hr>
+    
+        <div class="row mt-3 oculto">
+            <h2 id="frase"></h2>
+        </div>
+
+        <hr>
+
+        <div class="row mt-3 oculto">
+            <div class="col-6">
+                <button class="btn btn-primary" id="cantidad">Cantidad de caracteres</button>
+                <button class="btn btn-primary" id="mayuscula">Convertir a Mayusculas</button>
+                <button class="btn btn-primary mt-2" id="minuscula">Convertir a Minuscula</button>
+            </div>
+            
+            <div class="col-6">
+                <h4 id="resultado"></h4>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row mt-3 oculto">
+            <div class="col-6">
+                <h3>Buscar por subcadena y reemplazar</h3>
+                <form id="formuno">
+                    Buscar:
+                    <p><input type="text" name="busqueda" id="busqueda"></p>
+                    Reemplazar:
+                    <p><input type="text" name="reemplazo" id="reemplazo"></p>
+                </form>    
+                    
+                <button id="primera" class="btn btn-danger">Primera palabra</button>
+                <button id="todas" class="btn btn-warning">Todas las palabras</button>
+            </div>
+            <div class="col-6">
+                <h4 id="resultado2"></h4>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row mt-3 oculto">
+            <div class="col-6">
+                <h3>Buscar por posición</h3>
+                <form id="formdos">
+                    Numero Uno:
+                    <p><input type="text" name="uno" id="uno"></p>
+                    Numero Dos:
+                    <p><input type="text" name="dos" id="dos"></p>
+                </form>
+                <button id="buscar" class="btn btn-success">Buscar</button>
+            </div>
+            <div class="col-6">
+                <h4 id="resultado3"></h4>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        var intro = document.getElementById('introducir');
+        var caracter = document.getElementById('cantidad');
+        var mayuscula = document.getElementById('mayuscula');
+        var minuscula = document.getElementById('minuscula');
+        var primera = document.getElementById('primera');
+        var todas = document.getElementById('todas');
+        var buscar = document.getElementById('buscar');
+        var formuno = document.getElementById('formuno');
+        var formdos = document.getElementById('formdos');
+
+        intro.addEventListener('click', ()=>{
+            let cadena= document.getElementById('cadena').value;
+            let frase = document.getElementById('frase');
+            let oculto = document.querySelectorAll('.oculto');
+            let resultado = document.getElementById('resultado');
+            for (let i=0; i<oculto.length; i++){
+                oculto[i].classList.remove('oculto');
+            }
+            frase.textContent = cadena;
+            caracter.addEventListener('click', ()=>{
+                resultado.textContent = cadena.length;
+            });
+            mayuscula.addEventListener('click', ()=>{
+                resultado.textContent = cadena.toUpperCase();
+            });
+            minuscula.addEventListener('click', ()=>{
+                resultado.textContent = cadena.toLowerCase();
+            });
+            primera.addEventListener('click', ()=>{
+                let busqueda = document.getElementById('busqueda').value;
+                let reemplazo = document.getElementById('reemplazo').value;
+                let resultado2 = document.getElementById('resultado2');
+                
+                if(cadena.includes(busqueda)){
+                    resultado2.textContent = cadena.replace(busqueda, reemplazo);
+                    formuno.reset();
+                }
+                else{
+                    resultado2.textContent = "No se ha encontrado la subcadena indicada"
+                    formuno.reset();
+                }
+                
+            })
+            todas.addEventListener('click', ()=>{
+                let busqueda = document.getElementById('busqueda').value;
+                let reemplazo = document.getElementById('reemplazo').value;
+                let resultado2 = document.getElementById('resultado2');
+                let busqueda1 = new RegExp(busqueda, 'gi');
+                if(cadena.includes(busqueda)){
+                    resultado2.textContent = cadena.replace(busqueda1, reemplazo);
+                    formuno.reset();
+                }
+                else{
+                    resultado2.textContent = "No se ha encontrado la subcadena indicada"
+                    formuno.reset();
+                }
+            });
+            buscar.addEventListener('click', ()=>{
+                let numerouno = document.getElementById('uno').value;
+                let numerodos = document.getElementById('dos').value;
+                let resultado3 = document.getElementById('resultado3');
+
+                let msg = "";
+                if(numerouno<0){
+                    msg += "El primer numero para trocear es negativo <br>"
+                }
+                else if (isNaN(numerouno) || isNaN(numerodos)){
+                    msg += "Uno de los numeros (o ambos) no son numeros <br>";
+                }
+                else if(numerodos>=cadena.length){
+                    msg += "El segundo numero es mayor a la última posición de la cadena"
+                }
+
+                if(msg==""){
+                    resultado3.textContent = cadena.slice(numerouno, numerodos);
+                }
+                else{
+                    resultado3.innerHTML = msg;
+                }
+                
+               
+                
+
+            });
+        })
+
+    </script>
+</body>
+
+</html>

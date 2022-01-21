@@ -1,0 +1,70 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+div{
+    width: 100%;
+}
+h1{
+    text-align: center;
+    font-size: 3.5em;
+}
+.fst{
+    background-color:lightgrey;
+    border: 1px solid black;
+}
+.fst2{
+    background-color:beige;
+    border: 1px solid black;
+}
+.fst3{
+    background-color:indianred;
+    border: 1px solid black;
+}
+.lgn{
+    background-color: aliceblue;
+    border: 1px solid black;
+}
+.td1{
+    width: 25%;
+}
+.td2{
+    width: 15%;
+}
+table{
+    width: 100%;
+    
+}
+#dni{
+    width: 150px;
+}
+#localidad{
+    width: 150px;
+}
+#nombre{
+    width: 400px;
+}
+#apellidos{
+    width: 400px;
+}
+#direccion{
+    width: 600px;
+}
+#codigo{
+    width: 150px;
+}
+#list{
+    margin-left: 30px;
+}
+ul{
+    list-style: none;
+    
+}
+li{
+    margin-top: 10px;
+}
+#texto{
+    width: 120px;
+}
+#otr{
+    width: 400px;
+}

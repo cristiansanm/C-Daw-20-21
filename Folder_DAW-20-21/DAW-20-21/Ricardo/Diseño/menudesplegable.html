@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #menu{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-size: 0.8em;
+            
+        }
+        .linea:not(#enlaces){
+            display: inline-flex;
+            
+        }
+        #menu li{
+            
+            border: 1px solid orange;
+            background-color: crimson;
+            color:azure;
+            display: inline;
+            text-align: center;
+            padding: 2%;
+            margin-left: 10px;
+            
+        }
+        #menu li ul{
+            list-style: none;
+            visibility: hidden;
+            display: none;
+        }
+        #enlaces ul li{
+            background-color:darksalmon;
+            width: 100%;
+        }
+        #enlaces ul{
+            padding-left: 0;
+        }
+        #enlaces ul li a{
+            text-decoration: none;
+            color:aliceblue;
+            font-size: 0.5em;
+        }
+        #enlaces:hover ul{
+            visibility: visible;
+            display: block;
+            border: 0.5px solid darkred;
+        }
+
+    </style>
+</head>
+<body>
+    <ul id="menu" class="linea">
+        <li>Inicio</li>
+        <li id="enlaces">Enlaces
+            <ul>
+                <li><a href="#">Web 1</a></li>
+                <li><a href="#">Web 2</a></li>
+                <li><a href="#">Web 3</a></li>
+                <li><a href="#">Web 4</a></li>
+            </ul>
+        </li>
+        <li>Foros</li>
+        <li>Descargas
+            <ul>
+                <li><a href="#">Descarga</a></li>
+                <li><a href="#">Descarga</a></li>
+                <li><a href="#">Descarga</a></li>
+            </ul>
+        </li>
+        <li>Contacto</li>
+        <li>Otras Cosas</li>
+    </ul>
+</body>
+</html>

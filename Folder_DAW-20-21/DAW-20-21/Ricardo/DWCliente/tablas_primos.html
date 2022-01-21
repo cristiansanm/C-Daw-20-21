@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+        /* Funcion que dibuja una tabla html
+        Como parmatros se le pasa las filas y columnas. Por defecto 10 y 4
+        
+        La tabla tiene de borde de celda 1 px, negro por defecto o se le puede parar como el parametro del color
+        
+        El borde de las tablas era de 3 px y del mismo color de las celdas
+        
+        La tabla ocupa todo el ancho de la pagina
+        
+        ***********************************************
+        
+        Para probar el ejercicio
+        Crea una tabla de 10x4 con borde negros
+        Crear una tabla de 5x4 con bordes rosas
+        Crear una tabla como quieras
+        
+        ------------------------------------------------------------
+        Hacer una funcion que te diga si un numero es primo.
+        Crea una funcion a la que se le pase un numero indeterminado de numeros y la funcion de primos y te diga cuales son los primos.*/
+        /*var tr;
+        var td;
+        var color;
+        var ancho="100";
+        function tabla(tr=10, td=4, color="black"){
+            document.write('<table style="border: 3px solid '+color+'; border-collapse:collapse; width: '+ancho+'%">');
+            for(let j=0; j<=tr; j++){
+                document.writeln('<tr style="border:1px solid '+color+';border-collapse:collapse">');
+                    for(let i=1; i<=td;i++){
+                        document.writeln('<td style="border: 1px solid '+color+';border-collapse:collapse">'+'hola mundo'+'</td>');
+                    }
+                document.writeln('</tr>');}
+            document.write("</table>");
+        }
+        tr=parseInt(prompt("Numero de filas"));
+        td=parseInt(prompt("Numero de columnas"));
+        color= prompt("Define el color").toLowerCase();
+        if(tr==0&&td==0&&color=="0"){
+            tabla();
+        }
+        else{
+            tabla(tr,td,color);
+        }*/
+        var numero=7;
+        var contador;
+        function primos(numero){
+            if(numero>0 && numero<4){
+                document.write("El numero "+numero+" es primo");
+            }
+            else{
+                i=2;
+                contador=0;
+                for(i; i<numero; i++){
+                    if(numero%i==0){
+                        contador++;
+                    }
+                }
+                if(contador==0){
+                    document.write("El numero "+numero+" es primo");
+                }
+                else{
+                    document.write("El numero "+numero+" no es primo");
+                }
+            }
+        }
+        function pasar_valores(...args){
+            
+            args.forEach(element => {
+                primos(element);
+                document.write("<br>"); 
+            });
+        }
+        pasar_valores(1,2,3,4,5,6,7);
+    </script>
+    
+</body>
+</html>

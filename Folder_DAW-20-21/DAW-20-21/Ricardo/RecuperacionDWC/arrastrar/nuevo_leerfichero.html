@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 350px;
+            height: 70px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+        }
+    </style>
+    
+</head>
+
+<body>
+
+    <p>Drag the W3Schools image into the rectangle:</p>
+
+    <div id="div1"></div>
+    <br>
+    <p id="drag1" draggable="true">Soy un texto</p>
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+            console.log(ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text/plain");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+        
+        var div1 = document.getElementById('div1');
+        var drag1 = document.getElementById('drag1');
+        div1.addEventListener('drop', drop);
+        div1.addEventListener('dragover', allowDrop);
+        drag1.addEventListener('dragstart', drag);
+
+    </script>
+</body>
+
+</html>

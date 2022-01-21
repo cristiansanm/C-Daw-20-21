@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 7</title>
+</head>
+<body>
+    <div>
+        <p>Nombre: <span id="nombre"></span></p>
+        <p>Apellido: <span id="apellido"></span></p>
+        <p>Pais: <span id="pais"></span></p>
+        <img src="" alt="">
+    </div>
+
+    <script>
+    var nom=document.getElementById('nombre');
+    var ape=document.getElementById('apellido');
+    var pais=document.getElementById('pais');
+    var img=document.getElementsByTagName('img')[0];
+    fetch('https://randomuser.me/api/')
+        .then(res=>{
+            //console.log(res.estatus);
+            //return res.text()
+            if(res.ok){
+                return res.json();
+            }else{
+                throw new Error("Los datos no llegan bien");
+            }
+        })
+        .then(resultado=>{
+            
+            nom.textContent=resultado.results[0].name.first;
+            ape.textContent=resultado.results[0].name.last;
+            pais.textContent=resultado.results[0].location.country;
+            img.setAttribute('src', resultado.results[0].picture.large);
+        })
+        .catch(err=>{
+            console.log("error", err);
+        })
+    </script>
+</body>
+</html>

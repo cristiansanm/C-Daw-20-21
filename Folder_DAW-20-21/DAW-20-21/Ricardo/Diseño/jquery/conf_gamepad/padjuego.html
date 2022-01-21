@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/jquery-ui.css"/>
+    <link rel="stylesheet" href="css/jquery-ui.theme.css"/>
+    <link rel="stylesheet" href="css/jquery-ui.structure.css">
+    <link rel="stylesheet" href="https:/resources/demos/style.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="css/jquery-ui.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="videodialog">
+        <video id="video1" width="320" height="220" controls preload autoplay poster="img/gamepad.jpg">
+            <source src="img/config.mp4" type="video/mp4"/>
+        </video>
+    </div>
+    
+    <button id="btn-ayuda" class="ui-button ui-widget ui-corner-all"> Ayuda </button>
+    
+    <div class="flex">
+        <div>
+            <ul id="sortable1" class="connectedSortable">
+                <li class="ui-state-default draggable"><span>Up</span><button class="elemento">Change</button></li>
+                <li class="ui-state-default draggable"><span>Down</span><button class="elemento">Change</button></li>
+                <li class="ui-state-default draggable"><span>Right</span><button class="elemento">Change</button></li>
+                <li class="ui-state-default draggable"><span>Left</span><button class="elemento">Change</button></li>
+            </ul>
+        </div>
+
+        <div>
+
+        </div>
+            <div class="divflex">    
+                <div class="divpad ui-widget-content droppable"></div>
+                <div class="divpad ui-widget-content droppable"></div>
+                <div class="divpad ui-widget-content droppable"></div>
+                <div class="divpad ui-widget-content droppable"></div>
+            </div>
+            <img class="img1" src="img/gamepad_gris.png" alt="gamepad"/>
+            
+            <div class="divflex">    
+                <div class="divpad ui-widget-content droppable"></div>
+                <div class="divpad ui-widget-content droppable"></div>
+                <div class="divpad ui-widget-content droppable"></div>
+                <div class="divpad ui-widget-content droppable"></div>
+            </div>
+        <div>
+            <ul id="sortable2">
+                <li class="ui-state-default draggable"><span>A</span><button class="elemento">Change</button></li>
+                <li class="ui-state-default draggable"><span>B</span><button class="elemento">Change</button></li>
+                <li class="ui-state-default draggable"><span>X</span><button class="elemento">Change</button></li>
+                <li class="ui-state-default draggable"><span>Z</span><button class="elemento">Change</button></li>
+            </ul>
+        </div>
+    </div>
+    
+
+    <div id="dialog-form" title="Create new user">
+        <p class="validateTips">Todos los espacios necesitan ser rellenados</p>
+       
+        <form>
+          <fieldset>
+            <label for="tecla">Cambiar Tecla</label>
+            <input type="text" name="tecla" id="tecla" class="text ui-widget-content ui-corner-all">      
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+          </fieldset>
+        </form>
+    </div>
+
+
+    <script>
+        $(function (){
+            var drop = $('.droppable');
+            var i=0;
+            $( ".draggable" ).draggable({
+                revert:"invalid"
+            });
+            $( ".droppable" ).droppable({
+                drop: function( event, ui ) {
+                    $( this )
+                    .addClass( "ui-state-highlight" )
+                    i++;
+                    if(drop.hasClass( "ui-state-highlight") && (i == 8)){
+                        $('img').eq(0).removeAttr('src')
+                        $('img').eq(0).attr('src', 'img/gamepad.png');
+                    }
+                }
+            });
+            
+            
+            var diaglo2;
+            var video = document.getElementById('video1')
+
+            dialog2= $('#videodialog').dialog({
+                autoOpen: false,
+                height: 400,
+                width: 350,
+                modal: true,
+                buttons: {
+                    Cancel: function () {
+                        dialog2.dialog("close");
+                        video.pause();
+                    }
+                }
+            })
+
+            
+
+            $('#btn-ayuda').on('click', function(){
+                dialog2.dialog('open');
+            })
+
+
+            
+            $('.elemento').on('click', function(){
+                var dialog, form, tecla=$('#tecla');
+                
+                var recent= ($(this).parent().find('span'));
+                console.log(recent.text())
+                
+                function updateKey(){
+                    recent.text($('#tecla').val());
+                    recent.addClass('ui-state-highlight');
+                    dialog.dialog('close');
+                }
+    
+                dialog = $("#dialog-form").dialog({
+                    autoOpen: false,
+                    height: 400,
+                    width: 350,
+                    modal: true,
+                    buttons: {
+                        "Cambiar Tecla": updateKey,
+                        
+                        Cancel: function(){
+                            dialog.dialog("close");
+                        }
+                        //allFields.removeClass("ui-state-error");
+                    },
+                    close: function(){
+                        $('form')[0].reset();
+                    }
+                });
+    
+                form = dialog.find("form").on("submit", function (event){
+                    event.preventDefault();
+                    updateKey();
+                })
+                dialog.dialog("open");
+                
+            });
+
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery UI Button - Default functionality</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https:/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        #redimensionable{
+            width: 220px;
+            height: 250px;
+            padding: 1em;
+            margin: 10px;
+        }
+        h3{
+            text-align: center;
+            padding: 1em;
+        }
+        #contenedor{
+            width: 500px;
+            height: 600px;
+            padding: 0.5em;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor" class="ui-widget-content">
+        <h3 class="ui-widget-header">Contenedor</h3>
+        <div id="redimensionable" class="ui-state-active">
+            <h3 class="ui-widget-header">Redimensionable</h3>
+        </div>
+    </div>
+    
+    <script>
+        $( function() {
+            $('#redimensionable').draggable({
+                containment: "#contenedor"
+            });
+            $('#redimensionable').resizable({
+                // maxHeight: 400,
+                // maxWidth: 400,
+                minWidth: 200,
+                minHeight: 200,
+                containment:"#contenedor",
+                ghost:true
+            });
+        });
+    </script> 
+</body>
+</html>

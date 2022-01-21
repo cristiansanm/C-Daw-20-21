@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Citas</title>
+    <style>
+        
+        h3{
+            text-align: center;
+            color: white;
+        }
+        #titulo{
+            width:100%;
+            background-color: black;
+        }
+        .cabecera {
+            width:80%;
+            display: inline-flex;
+            margin: 0 10%;
+            justify-content: space-around;
+            margin-bottom: 10px;
+        }
+        .cabecera div{
+            border: 2px green solid;
+            width: 20%;
+            text-align: center;
+        }
+        .cita:hover{
+            background-color: orange;
+        }
+        #formulario{
+            width:40%;
+            margin: 2% 30%;
+            display: flex;
+            border: 3px solid blue;
+            padding: 1% 2%;
+            border-radius: 10px;
+        }
+        #formulario h4{
+            text-align: center;
+        }
+        .borrar{
+            display: none;
+            cursor: pointer;
+            float: right;
+        }
+        .arrastrar:hover{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="titulo"><h3>Gestion de Citas</h3></div>
+    <div class="cabecera">
+        <div>Hora</div>
+        <div>Lunes</div>
+        <div>Martes</div>
+        <div>Miercoles</div>
+        <div>Jueves</div>
+        <div>Viernes</div>
+    </div>
+    <div class="cabecera">
+        <div>9:00 - 9:30</div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+    </div>
+    <div class="cabecera">
+        <div>9:30 - 10:00</div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        
+    </div>
+    <div class="cabecera">
+        <div>10:00 - 10:30</div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+    </div>
+    <div class="cabecera">
+        <div>16:00 - 16:30</div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        
+    </div>
+    <div class="cabecera">
+        <div>16:30 - 17:00</div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+        <div class="cita"></div>
+    </div>
+    
+    <div id="formulario">
+        <form action="">
+            <h4>Nueva cita</h4>
+            <p>Nombre</p>
+            <input type="text" name="nombre" id="nombre" required>
+            <p>Telefono</p>
+            <input type="text" name="telefono" id="telefono" required>
+            <p>Cliente</p>
+            <p><input type="checkbox" name="cliente" id="cliente"></p>
+            <p>Seleccionar Archivo: <input type="file" name="file[]" id="file"></p>
+        </form>
+    </div>
+
+    <script>
+        //Recoge los div donde se insertan las citas
+        var cita=document.getElementsByClassName('cita');
+        //Recorre los div para interactuar con ellos
+        function empezarArrastre(e){
+            //Añade una clase para que sea tratada en el Draggable y el Drop
+            e.target.classList.add('arrastrado');
+        }
+        function dragOver(e){
+            //Evita que suceda alguna funcion por default antes de hacer el drop cuando colocamos el drag
+            e.preventDefault();
+        }
+        function dropArrastre(e) {
+            //Coge el elemento que tenga la clase arrastrado para movilizarlo
+            let arrastrado = document.getElementsByClassName('arrastrado')[0];
+            //El div a dónde se insertará los datos del drag
+            let contenedorDrop = e.target;
+
+            //Inserta el elemento con la clase arrastrado en el div target
+            contenedorDrop.appendChild(arrastrado);
+            //Le quita la clase al div que ya no tiene los datos
+            arrastrado.classList.remove('arrastrado');
+        }
+        function borrarDatos(e){
+            //Recoje al padre del target, que será la x dentro de un span
+            var targetDiv = e.currentTarget.parentNode;
+            //Mientras tenga un hijo dentro el padre, lo borrará
+            while (targetDiv.firstChild){
+                targetDiv.removeChild(targetDiv.firstChild);
+            };
+            e.currentTarget.stopPropagation();
+        }
+        function addDatos(e){
+            var pNombre= document.createElement('p');
+            var padre = document.createElement('span');
+            var pTelef= document.createElement('p');
+            var pCliente= document.createElement('p');
+            var nombre=document.getElementById('nombre').value;
+            var telefono=document.getElementById('telefono').value;
+            var borrar = document.createElement('span');
+            var cliente = document.getElementById('cliente');
+            var datos = document.createElement('span');
+            var divChild= e.currentTarget;
+            
+            pNombre.textContent=nombre;
+            pTelef.textContent=telefono;
+            
+            //Si los campos no estan vacios, se inserta dentro del div
+            if( pNombre.textContent!="" && pTelef.textContent!=""){
+                //Al ser de opcion multiple, pregunta por cual esta marcado a traves del for
+                
+                if(cliente.checked){
+                    pCliente.textContent="Es cliente"
+                }
+                else{
+                    pCliente.textContent="No es cliente"
+                }
+                
+                
+                //Añade los hijos
+                borrar.textContent='x';
+                borrar.classList.add('borrar');
+                datos.appendChild(pNombre);
+                datos.appendChild(pTelef);
+                datos.appendChild(pCliente);
+                padre.appendChild(borrar);
+                padre.appendChild(datos);
+                
+                padre.setAttribute('draggable', 'true');
+                padre.addEventListener('dragstart', empezarArrastre);
+
+                e.currentTarget.appendChild(padre);
+                //Muestra la x para borrar
+                borrar.style.display='block';
+                //Evento para borrar los elementos dentro del div
+                borrar.addEventListener('click', borrarDatos);
+                
+                document.getElementsByTagName('form')[0].reset();
+            }
+            else{
+                alert('no ha ingresado los datos');
+            }
+        }
+
+        for(let elemento of cita){
+            //Cada vez que haga click en un div, hará la función indicada
+            elemento.addEventListener('click', addDatos);
+            elemento.addEventListener('dragover', dragOver);
+            elemento.addEventListener('drop', dropArrastre);
+
+        }
+    </script>
+</body>
+</html>

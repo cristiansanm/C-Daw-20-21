@@ -1,0 +1,36 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+#menu{
+    margin: auto;
+    width: 500px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+ul{
+    list-style: none;
+}
+.boton > li{
+    float: left;
+}
+.boton li a{
+    background-color: aquamarine;
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 10px 12px;
+    display: block;
+}
+.boton li a:hover{
+    background-color: greenyellow;
+}
+.boton li ul{
+    display:none;
+    position: absolute;
+    min-width: 140px;
+}
+.boton li:hover>ul{
+    display:block;
+}
+.boton li ul li{
+    position: relative;
+}

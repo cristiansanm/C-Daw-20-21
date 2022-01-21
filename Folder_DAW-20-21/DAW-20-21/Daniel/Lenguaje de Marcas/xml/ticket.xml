@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ticket [
+    <!ELEMENT ticket (fecha, hora, precio_total, forma_pago, datos_de_empresa, datos_de_compra)>
+      <!ATTLIST ticket id ID #REQUIRED>
+          <!ELEMENT fecha (dia, mes, año)>
+              <!ELEMENT dia (#PCDATA)>
+              <!ELEMENT mes (#PCDATA)>
+              <!ELEMENT año (#PCDATA)>
+          <!ELEMENT hora (horas, minutos)>
+              <!ELEMENT horas (#PCDATA)>
+              <!ELEMENT minutos (#PCDATA)>
+          <!ELEMENT precio_total (precio_base, IVA+, PVP)>
+              <!ATTLIST precio_total moneda CDATA "euro">
+                  <!ELEMENT precio_base (#PCDATA)>
+                  <!ELEMENT IVA (#PCDATA)>
+                  <!ELEMENT PVP (#PCDATA)>
+          <!ELEMENT forma_pago (efectivo | tarjeta)*>
+              <!ELEMENT efectivo (#PCDATA)>
+              <!ELEMENT tarjeta (num_tarjeta, nombre_cliente?)>
+                <!ATTLIST tarjeta tipo CDATA #REQUIRED>
+                    <!ELEMENT num_tarjeta (#PCDATA)>
+                    <!ELEMENT nombre_cliente (#PCDATA)>
+          <!ELEMENT datos_de_empresa (nombre, direccion, CIF, telefono?)>
+              <!ELEMENT nombre (#PCDATA)>
+              <!ELEMENT direccion (ubicacion, numero_ub, ciudad?, provincia?)>
+                <!ATTLIST direccion codigo_postal NMTOKEN #REQUIRED>
+                    <!ELEMENT ubicacion (#PCDATA)>
+                    <!ELEMENT numero_ub (#PCDATA)>
+                    <!ELEMENT ciudad (#PCDATA)>
+                    <!ELEMENT provincia (#PCDATA)>
+              <!ELEMENT CIF (#PCDATA)>
+              <!ELEMENT telefono (#PCDATA)>
+          <!ELEMENT datos_de_compra (linea_de_compra+)>
+              <!ELEMENT linea_de_compra (nombre_articulo, cantidad, precio_unitario, IVA_c*, PVP_c)>
+                  <!ELEMENT nombre_articulo (#PCDATA)>
+                  <!ELEMENT cantidad (#PCDATA)>
+                  <!ELEMENT precio_unitario (#PCDATA)>
+                  <!ELEMENT IVA_c (#PCDATA)>
+                  <!ELEMENT PVP_c (#PCDATA)>
+]>
+<ticket id="TCK1234D">
+    <fecha>
+      <dia>01</dia>
+      <mes>05</mes>
+      <año>2020</año>
+    </fecha>
+    <hora>
+      <horas>22</horas>
+      <minutos>15</minutos>
+    </hora>
+    <precio_total moneda="euro">
+      <precio_base>135.00</precio_base>
+      <IVA>0.18</IVA>
+      <PVP>159.30</PVP>
+    </precio_total>
+    <forma_pago>
+      <efectivo></efectivo>
+      <tarjeta tipo="debito">
+        <num_tarjeta>************4556</num_tarjeta>
+        <nombre_cliente>Carlos Santisteban</nombre_cliente>
+      </tarjeta>
+    </forma_pago>
+    <datos_de_empresa>
+      <nombre>Sprinter S.A.</nombre>
+      <direccion codigo_postal="30510">
+          <ubicacion>Calle Hospital</ubicacion>
+          <numero_ub>16</numero_ub>
+          <ciudad>Yecla</ciudad>
+          <provincia>Murcia</provincia>
+      </direccion>
+      <CIF>B-12345678</CIF>
+      <telefono>651489714</telefono>
+    </datos_de_empresa>
+    <datos_de_compra>
+      <linea_de_compra>
+        <nombre_articulo>Zapatillas Puma Smash V8</nombre_articulo>
+        <cantidad>1</cantidad>
+        <precio_unitario>135.00</precio_unitario>
+        <IVA_c>0.18</IVA_c>
+        <PVP_c>159.30</PVP_c>
+      </linea_de_compra>
+    </datos_de_compra>
+</ticket>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios</title>
+</head>
+<body>
+    <div id="contenedor">
+        <p id="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quo nemo ad dolores repudiandae. Tempora rerum ut, inventore, temporibus eaque saepe maxime recusandae est labore omnis expedita corrupti quis! Laudantium?</p>
+        <p>Sunt, quas similique impedit recusandae vitae deleniti voluptatibus, doloremque tempora, nostrum in provident soluta porro? Tempora tempore odit voluptatem eaque accusantium cupiditate, consequuntur aliquid eum nostrum ipsum blanditiis natus unde!</p>
+        <p>Nihil, animi? Expedita inventore voluptatibus corporis voluptatum ea a animi, ad, reprehenderit distinctio, minus reiciendis alias cumque veniam. Eligendi officia soluta assumenda, delectus tenetur non nihil voluptatem in natus minus.</p>
+        <p>Explicabo magni, voluptate rem deserunt sequi corrupti error! Quod architecto, enim aliquam voluptas expedita et error vel, ipsa aliquid qui veritatis, maiores eligendi iste consequuntur laudantium magni repellendus harum. Dolore.</p>
+        <p>Odit delectus at provident iusto maxime obcaecati placeat dolorem nobis sequi? Excepturi mollitia velit saepe quis delectus. Quo corporis et cumque atque incidunt? Voluptates voluptatem facilis explicabo eveniet quas consequatur!</p>
+        <p>Sint quos eaque corrupti. Itaque fuga officiis autem, eos ratione ipsam necessitatibus repellendus praesentium voluptatum animi quasi nesciunt cum sed assumenda iste veniam numquam nobis suscipit totam dolor corporis? Illo?</p>
+        <p>Et doloremque vel quidem explicabo eos veniam beatae sequi voluptatum, odio non quo magnam ea saepe eum labore cumque? Ad quam atque sequi sunt cum obcaecati, tenetur eaque architecto tempora?</p>
+    </div>
+
+    <script>
+        var arraysP=[];
+        var container=document.getElementById("contenedor");
+        var parrafos=container.querySelectorAll("p");
+
+        for(let p of parrafos){
+            arraysP.unshift(p);
+            container.removeChild(p);
+        }
+
+        var desconectar = setInterval(() => {
+            if(!arraysP.length){
+                clearInterval(desconectar);
+            }
+            else{
+                var miP=arraysP.pop();
+                console.log(miP.length);
+                var texto=miP.innerHTML;
+                miP.innerHTML="";
+                container.appendChild(miP);
+                var des=setInterval(() => {
+                    if(texto){
+                        miP.innerHTML=miP.innerHTML+texto.slice(0,1);
+                        console.log(miP.innerHTML.length);
+                        texto=texto.slice(1);
+                    }
+                    else{
+                        clearInterval(des);
+                    }
+                }, 100);
+            }
+        }, 2000); 
+
+        
+    </script>
+</body>
+</html>

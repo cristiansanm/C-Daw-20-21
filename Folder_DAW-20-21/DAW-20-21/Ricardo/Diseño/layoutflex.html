@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex</title>
+    <style>
+        .cabecera{
+            margin: 0px auto 0px auto;
+            width: 90%;
+            padding-bottom:1em;
+            padding-top: 1em;
+            text-align: center;
+            background-color: blueviolet;
+        }
+        .cuerpo{
+            display: flex;
+            width: 90%;
+            border: 1px solid black;
+            flex-direction: row;
+            margin: 0px auto 0px auto;
+        }
+        .lateral{
+            width: 15%;
+            background-color: brown;
+            text-align: center;
+            order:2;
+        }
+        .central{
+            width: 90%;
+            background-color: aquamarine;
+            order:1;
+            display:flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            text-align: center;
+            justify-content: space-between;
+        }
+        .central h2{
+            width: 100%;
+        }
+        #pie{
+            clear: both;
+            margin: 0px auto 0px auto;
+            width: 90%;
+            text-align: center;
+            color:whitesmoke;
+            background-color: darkorchid;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="cabecera">
+        <h2>Cabecera flex</h2>
+    </div>
+    <div class="cuerpo">
+        <div class="lateral">
+            <h2>Lateral</h2>
+        </div>
+        <div class="central">
+            <h2>Central</h2>
+            <div><img src="img/plankton.jpg" alt=""></div>
+            <div><img src="img/plankton.jpg" alt=""></div>
+            <div><img src="img/plankton.jpg" alt=""></div>
+            <div><img src="img/plankton.jpg" alt=""></div>
+            <div><img src="img/plankton.jpg" alt=""></div>
+            <div><img src="img/plankton.jpg" alt=""></div>
+            <div><img src="img/plankton.jpg" alt=""></div>
+            <div><img src="img/plankton.jpg" alt=""></div>
+        </div>
+        
+    </div>
+    <div id="pie">Pie</div>
+    
+</body>
+</html>

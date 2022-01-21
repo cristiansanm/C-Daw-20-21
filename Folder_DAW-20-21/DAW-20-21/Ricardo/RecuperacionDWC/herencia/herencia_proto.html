@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Poligono_regular(lados,nombre) {
+            this.lados=lados;
+            this.nombre=nombre;
+            this.mostrarInfo=()=>`Soy un ${this.nombre} y tengo ${this.lados} lados\n`;
+        }
+        
+        let a=new Poligono_regular(4,'Cuadrado');
+        let b=new Poligono_regular(3,"Triangulo");
+        
+        Poligono_regular.prototype.U;
+        Poligono_regular.prototype.U=5;
+        
+        Poligono_regular.prototype.Angulo_Interior=function(){
+            return 180*(this.lados-2)/this.lados;
+        }
+        // Solo se lo para el objeto a
+        
+        a.U=4;
+        
+        console.log(a.Angulo_Interior());
+        console.log(a.mostrarInfo())
+        //Preguntar por __proto__ en a y los parametros que muestra
+        console.log(a.__proto__);
+        
+        //Clase para crear policias uqe hereda de persona y tiene de campos comisaria y rango
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Arrastrar</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https:/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        #draggable{
+            width: 14em;
+            padding: 0.5em 0.5em;
+        }
+        #draggable ul li{ 
+            margin: 1em 0;
+            padding: 0.5em 1em;
+        }
+    </style>
+</head>
+<body>
+    <div id="draggable" class="ui-widget ui-widget-content">
+        <p>informacion de arrastre</p>
+        <ul class="ui-helper-reset">
+            <li id="evento-start" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-play">Empezaste</span><span class="contador">Veces</span></li>
+            <li id="evento-drag" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-arrow">Ubicacion</span><span class="contador">Veces</span></li>
+            <li id="evento-stop" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-stop">Paraste</span><span class="contador">Veces</span></li>
+        </ul>
+    </div>
+    <script>
+        $( function() {
+            var $li_start=$('#evento-start'),
+                $li_drag=$('#evento-drag'),
+                $li_stop=$('#evento-stop');
+            var contador=[0,0,0];
+            $('#draggable').draggable({
+                start:function(){
+                    contador[0]++;
+                    actualizarContadores(contador[0], $li_start);
+                },
+                drag:function(){
+                    contador[1]++;
+                    actualizarContadores(contador[1], $li_drag);
+                },
+                stop:function(){
+                    contador[2]++;
+                    actualizarContadores(contador[2], $li_stop);
+                }
+            });
+            function actualizarContadores(nuevoValor, $elementoActualizado){
+                $('span.contador', $elementoActualizado).text(nuevoValor);
+            }
+        });
+    </script> 
+</body>
+</html>

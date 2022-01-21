@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Ejemplo 1 Asicrono</title>
+</head>
+<body>
+    <script>
+        /*
+            Sumar dos numero 
+            calcular el cuadrado
+            lo dividimos entre dos
+            restar 100
+        */
+        const datos=[{
+            id: 1,
+            titulo: 'Breakfast in America',
+            year: 1979
+        },{
+            id: 2,
+            titulo: 'Automatic for the People',
+            year: 1992
+        },{
+            id: 3,
+            titulo: 'Alchemy Dire Straits live',
+            year: 1984
+        }];
+
+        var salida;
+        const getDatos=()=>{
+            setTimeout(()=>{
+                salida = datos;
+            }, 1500);
+        };
+        getDatos();
+        console.log(salida);
+        
+    </script>
+</body>
+</html>

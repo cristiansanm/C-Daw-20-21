@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+    <div id="contenedor">
+        <ul>
+            <li>4 hola</li>
+            <li>1 como</li>
+            <li>2 estas</li>
+            <li>5 es el penultimo</li>
+            <li>3 no es el primero</li>
+            <li>6 donde va</li>
+        </ul>
+    </div>
+
+    <script>
+        var elementos=document.getElementsByTagName("li");
+        var laLista=document.querySelectorAll("ul");
+        var elementoLi=[];
+
+        for(e of elementos){
+            elementoLi.push(e);
+            elementos.removeChild(e);
+        }
+        
+        console.log(elementoLi);
+    </script>
+</body>
+</html>

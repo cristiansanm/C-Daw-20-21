@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Popup challenge</title>
+    <style>
+        button {
+            display: block;
+            margin: 20px auto;
+            background: salmon;
+            color: white;
+            border: 0;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+ 
+        button:hover {
+            background: palevioletred;
+            transition: all 0.2s;
+        }
+
+        .popup-wrapper {
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .popup {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            background: white;
+            margin: 10% auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .popup a {
+            background: salmon;
+            color: white;
+            text-decoration: none;
+            padding: 6px 10px;
+            margin: 30px auto;
+            display: block;
+            width: 50%;
+        }
+
+        .popup a:hover {
+            background: palevioletred;
+            transition: all 0.2s;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <button>Haz clic para ver el popup</button>
+    <div class="popup-wrapper">
+        <div class="popup">
+            <div class="popup-close">x</div>
+            <div class="popup-content">
+                <h3>Ofertas libros JavaScript</h3>
+                <p>¡No te pierdas las mejores ofertas de libros para aprender JavaScript!</p>
+                <a href="https://amzn.to/2n9BJgk" target="_blank">¡Quiero verlos!</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var boton = document.getElementsByTagName('button')[0];
+        var popup = document.getElementsByClassName('popup-wrapper')[0];
+        var closepopup = document.getElementsByClassName('popup-close')[0];
+        boton.addEventListener('click', function(){
+            popup.style.display='block';
+            
+        });
+        closepopup.addEventListener('click', function(){
+                popup.style.display='none';
+        });
+
+        popup.addEventListener('clcik', e=>{
+            if(e.target.className === 'pop-wrapper'){
+                popup.style.display='none';
+            }
+        });
+    </script>
+</body>
+</html>

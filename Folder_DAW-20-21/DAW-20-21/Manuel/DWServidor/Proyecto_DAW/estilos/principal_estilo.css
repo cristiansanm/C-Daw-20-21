@@ -1,0 +1,25 @@
+.cuerpo {
+    float: left;
+    width: 90%;
+    border: 1px solid black;
+    margin: 5% 5%;
+    
+}
+.boton1{
+    float: left;
+}
+
+.boton1 input[type="image"]{
+    width:200px;
+    height: 200px;
+    
+}
+.boton2{
+    float: left;
+}
+.boton3{
+    float: left;
+}
+.boton4{
+    float: left;
+}

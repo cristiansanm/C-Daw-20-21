@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios</title>
+</head>
+<body>
+    <script>
+        //ejercicio 1
+        /*const a=[];
+        num=0;
+        for(let i=0; i<10; i++){
+            a.push(num=Math.trunc(Math.random()*10+1));
+        }
+        for (let value of a){
+            document.writeln("El numero " + value + " tiene como cuadrado "+ Math.pow(value, 2)+
+            " y como cubo "+ Math.pow(value, 3) + "<br/>");
+        }*/
+        //ejercicio 2
+        /*let texto=[];
+        texto_insertado="";
+        //inserta el texto en el array
+        for(let i=0; i<5; i++){
+            texto_insertado=prompt("Inserte un texto");
+            texto.push(texto_insertado);
+        }
+        //muestra el array original
+        document.write("Array original: ");
+        for(let i=0;i<texto.length;i++){
+            document.writeln("<br/>")
+            document.writeln(texto[i])
+        }
+        let texto_inverso=[];
+        longi=texto.length;
+        //guarda el array inverso en otro array
+        for(let i=0; i<longi; i++){
+            texto_inverso[i]=texto.pop();  
+        }
+        document.writeln("<br/>")
+        //muestra el array invertido
+        document.write("Array invertido: ");
+        for(let i=0;i<texto_inverso.length;i++){
+            document.writeln("<br/>")
+            document.writeln(texto_inverso[i])
+        }*/
+        
+        //ejercicio 3
+        const arraynotas=[];
+        notas=0;
+        indice_nota=1;
+        i=0;
+        dentro=false;
+        notas=parseInt(prompt("Ingrese la nota "+(indice_nota+i)));
+        while(dentro){
+            if(notas>=0 && notas<=10){
+                for(let i=0;i<5;i++){
+                    arraynotas.push(notas);
+                    i++;
+                    if(i=4){
+                        dentro=true;
+                    }
+                }   
+                notas=parseInt(prompt("Ingrese la nota "+(indice_nota+i)));
+            }
+            else{
+                notas=parseInt(prompt("No ha ingresado un numero dentro del 0 al 10,ingrese la nota "+(indice_nota+i)));    
+            }
+            
+        }
+        document.write(arraynotas);
+        
+
+        
+
+
+    </script>
+</body>
+</html>

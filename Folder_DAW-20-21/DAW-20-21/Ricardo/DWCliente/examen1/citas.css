@@ -1,0 +1,71 @@
+#cabecera{
+    border: 2px solid white;
+    text-align: center;
+    border-radius: 5px;
+    background-color: black;
+}
+#cabecera h1{
+    margin: 0px;
+    color: azure;
+}
+#tabla{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.fila{
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+#tabla span{
+    border: 1px solid black;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+}
+#contenedor_formulario{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    flex-direction: row;
+}
+#campo_formulario{
+    border: 1px solid black;
+    width: 20%;
+    padding: 15px;
+    border-radius: 3px;
+}
+#campo_formulario h3{
+    text-align: center;
+    margin: 0px;
+}
+#formulario{
+    display: flex;
+    flex-direction: column;
+}
+#formulario input{
+    margin: 5px;
+}
+.arrastrable p{
+    padding: 5px;
+}
+.cita{
+    color: green;
+    background-color: lightsalmon;
+}
+#confirmador{
+    border: 1px solid black;
+    width: 20%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+#confirmador button{
+    width: 50%;
+    margin-bottom: 5px;
+    margin-left: 40px;
+}

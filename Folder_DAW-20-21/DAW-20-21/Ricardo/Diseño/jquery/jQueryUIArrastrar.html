@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Arrastrar</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https:/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        .draggable{
+            width: 90px;
+            height: 90px;
+            padding: 0.5em;
+            float: left;
+            margin: 0 10px 10px 0;
+        }
+        h3{
+            clear: left;
+        }
+        #draggablex{
+            cursor: e-resize;
+        }
+        #draggabley{
+            cursor: n-resize;
+        }
+        #contenedor{
+            width: 450px;
+            height: 250px;
+            border: 2px solid orange;
+            padding: 1px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Arrastrar</h3>
+    <div id="draggable1" class="draggable ui-widget-content">
+        <p>Arrastrable simple</p>
+    </div>
+    <h3>Bloquear ejes y cambiar inconos</h3>
+    <div id="draggablex" class="draggable ui-widget-content">
+        <p>Solo horizontal</p>
+    </div>
+    <div id="draggabley" class="draggable ui-widget-content">
+        <p>Solo vertical</p>
+    </div>
+    <h3>Perimetrar en pandemia</h3>
+    <div id="contenedor">
+        <div id="draggable2" class="draggable ui-widget-content">
+            <p>Arrastrable con limites</p>
+        </divclass>
+        <div class="draggable ui-widget-content">
+            <p id="draggable3" class="ui-widget-content">Limitado</p>
+        </div>
+    </div>
+    <script>
+        $( function() {
+            $('#draggable1').draggable();
+            $('#draggablex').draggable({axis:"x"});
+            $('#draggabley').draggable({axis:"y"});
+            $('#draggable2').draggable({containment: "#contenedor"});
+            $('#draggable3').draggable({containment: "parent"});
+        });
+    </script> 
+</body>
+</html>

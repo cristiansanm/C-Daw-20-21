@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limbo</title>
+</head>
+<body>
+    <h2>Limbo</h2>
+    
+    <input type="text" name="texto" id="texto">
+    <button id="enviar">Enviar</button>
+
+    <script>
+        palabrasArray = ['necio', 'ganar', 'perros', 'sitio'];
+        expReg=/[a-z][A-Z]{5}$/
+
+        insertado = document.getElementsByTagName('input')[0];
+        boton = document.getElementsByTagName('button')[0];
+        boton.addEventListener('click', ()=>{
+            if(expReg.test(insertado)){
+                document.write("Correcto");
+            }
+            else{
+                document.write("Expresion errorenea")
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //primer ejercicio
+        /*text1=prompt("Escribe la primera palabra");
+        text2=prompt("Escribe la segunda palabra");
+        if(text1.toLowerCase()==text2.toLowerCase()){
+            document.writeln("Ambos textos son iguales");
+        }else{
+            document.writeln("No son palabras iguales");
+        }*/
+        //segundo ejercicio
+        /*text1=prompt("Escribe una cadena de texto para contar las vocales");
+        text1=text1.toLowerCase();
+        convertext=text1.split("");
+        longitud=convertext.length;
+        num=0;
+        for(i=0;i<longitud;i++){
+            if(convertext[i]=="a"||convertext[i]=="e"||convertext[i]=="i"||convertext[i]=="o"||convertext[i]=="u"){
+                num++;
+            }document.write("<div style='width: "+wdt+"px ; height: "+hght+"px ; background-coocales");*/
+        //tercer ejercicio con indexof, slice (subcadenas)
+        /*texto="Primer espacio 'comillas simples 1' segundo espacio 'comillas simples 2'";
+        var cont=0;
+        var primero, segundo;
+
+        //contar comillas
+        for(i=0; i<texto.length;i++){
+            if(texto.charAt(i)=="'"){
+            cont++;}
+        }
+        
+
+        //inicializo las posiciones de las comillas
+
+        primero=texto.indexOf("'")+1;
+        segundo=texto.indexOf("'",primero+1);
+
+        //repetimos el proceso el nuumero de comillas entre dos.
+
+        for(i=0;i<Math.trunc(cont/2);i++){
+            document.write(texto.slice(primero,segundo)+"<br>");
+            primero=texto.indexOf("'",segundo+1)+1;
+            segundo=texto.indexOf("'", primero+1);
+        }*/
+        //ejercicio 4
+        /*text=prompt("escribe un texto");
+        convertexto=text.split("");
+        longitud=convertexto.length;
+        for(i=longitud-1;i>=0;i--){
+            document.write(convertexto[i]);;
+        }*/
+        //ejercicio 5
+        var wdt=200;
+        var hght=200;
+        var red=21, green=50, blue=100;
+        var top=0, left=500, right, bottom;
+        document.write("<div style='width: "+wdt+"px ; height: "+hght+"px ; background-color: rgb("+ red+ ","+green+","+blue+"); border-color: rgb("+ red+ ","+green+","+blue+"); border: solid 1px; position:absolute; top:"+ top +"px ; left:"+ left+"; bottom: "+ bottom+";'></div>");
+        for(i=0;i<=5000;i++){
+            wdt=Math.trunc(Math.random()*500+50);
+            hght=Math.trunc(Math.random()*500+50);
+            red=Math.trunc(Math.random()*254+1);
+            green=Math.trunc(Math.random()*254+1);
+            blue=Math.trunc(Math.random()*254+1);
+            top=Math.trunc(Math.random()*1600+1);
+            left=Math.trunc(Math.random()*800+1);
+            right=Math.trunc(Math.random()*800+1);
+            bottom=top=Math.trunc(Math.random()*1600+1);
+            if(wdt==hght){
+                document.write("<div style='width: "+wdt+"px ; height: "+hght+"px ; background-color: rgb("+ red+ ","+green+","+blue+"); border-color: rgb("+ red+ ","+green+","+blue+"); border: 1px; postion= absolute; top:"+ top +"px ; right: "+ right +"px; left:"+ left+"; bottom: "+ bottom+";'></div>");
+            }
+        }
+        
+    </script>
+</body>
+</html>

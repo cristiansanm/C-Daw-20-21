@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax2</title>
+    <style>
+        img{
+            width: 33%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Esperando la imagen...</p>
+    </div>
+
+    <script>
+        fetch('https://source.unsplash.com/random')
+        .then(res=>{
+            if(res.ok){
+                return res.blob();
+            }else{
+                throw new Error("Fallo en la conexón");
+            }
+        })
+        .then(blob=>{
+            console.log(blob.type);
+            let imagen = document.createElement('img');
+            imagen.setAttribute('src', URL.createObjectURL(blob));
+            document.getElementsByTagName('p')[0].remove();
+            document.getElementsByTagName('div')[0].appendChild(imagen);
+        })
+        .catch(err=>{
+            console.log("error", err);
+        })
+    </script>
+</body>
+</html>

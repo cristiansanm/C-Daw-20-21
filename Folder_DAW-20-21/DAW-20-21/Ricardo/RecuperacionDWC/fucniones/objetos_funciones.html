@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos</title>
+</head>
+<body>
+    <script>
+        
+        //Declaración del objeto con sus argumentos, con algunos por defecto
+        function Persona(nombre, apellido, tipoDoc, numeroDoc, fechaNacimiento, ciudad="Jumilla", codPost="31290", provincia="Murcia", pais="España"){
+            //Función para comprobar si el DNI cumple la conformacion necesaria
+            function DNI(dato){
+                let regExp = /[0-9]{8}[A-Z]{1}$/;
+                return regExp.test(dato);
+            }
+            //Función para comprobar si el NIE cumple la conformacion necesaria
+            function NIE(dato){
+                let regExp = /[X,Y,Z]{1}[0-9]{7}[A-Z]{1}$/
+                return regExp.test(dato);
+            }
+            //Funcion general que comprueba que tipo de documento se ha ingresado y si
+            function validarDocumento(tipoDoc, numDoc, NIE, DNI){
+                if(tipoDoc == "NIE" || tipoDoc == "nie"){
+                    return NIE(numDoc);
+                }
+                else if(tipoDoc == "DNI" || tipoDoc == "dni"){
+                    return DNI(numDoc);
+                }
+                else{
+                    return false;
+                }
+            }
+            //Funcion que recoge una fecha en formato "DD-MM-AAAA", lo reconvierte en un formato Date() y luego pregunta por si la 
+            //funcion .getTime() es un numero o no; si todo es correcto, devuelve verdadero
+            function fechaValida(fecha){
+                let fechaJs = fecha.split("-");
+                [fechaJs[0], fechaJs[2]] =[fechaJs[2], fechaJs[0]]
+                fecha = new Date(fechaJs.join("-"));
+                return (!isNaN(fecha.getTime())) 
+            }
+            //Consulta por si no son valores vacios los primeros 4 datos y luego asigna el resto
+            if(nombre && apellido && tipoDoc && numeroDoc){
+            
+                this.nombre=nombre;
+                this.apellido=apellido;
+                //Valida el tipo de documento y su conformación, del caso de ser erroneo, creo un DNI por defecto
+                if(validarDocumento(tipoDoc, numeroDoc, NIE, DNI)){
+                    this.tipoDoc=tipoDoc;
+                    this.numeroDoc=numeroDoc;
+                }
+                else{
+                    this.tipoDoc="DNI";
+                    this.numeroDoc="12345678Z"
+                }
+                this.ciudad=ciudad;
+                this.codPost=codPost;
+                this.provincia=provincia;
+                this.pais=pais;
+                
+                //Consulta por si la fecha es valida, asignandola en caso de ser verdadera y creando una por defecto en caso de ser falsa
+                if(fechaValida(fechaNacimiento)){
+                    this.fechaNacimiento=fechaNacimiento;
+                }
+                else{
+                    this.fechaNacimiento="01-01-2021"
+                }
+                
+                //Funcion que muestra todos los datos dentro del objeto
+                this.toString=()=>`Nombre: ${this.nombre}\n 
+                Apellido: ${this.apellido}\n 
+                Tipo de documento: ${this.tipoDoc} \n 
+                Numero de Documento: ${this.numeroDoc} \n 
+                Ciudad: ${this.ciudad}\n
+                Codigo Postal: ${this.codPost} \n
+                Provincia: ${this.provincia} \n
+                Pais: ${this.pais}\n
+                Fecha de Nacimiento ${this.fechaNacimiento}`;
+            }
+            this.nombreCompleto = (nombre, apellido)=>{
+                this.nombre=nombre;
+                this.apellido=apellido;
+            }
+            //Método que recoge una cierta cantidad de datos y según lo que se guarde en los argumentos Rest
+            //asignará en ese orden en los datos del objeto persona 
+            this.nuevoDomicilio = (...datos)=>{
+                if(datos.length==1){
+                    this.ciudad = datos[0];
+                }
+                else if(datos.length==2){
+                    this.ciudad = datos[0];
+                    this.codPost = datos[1];
+                }
+                else if(datos.length==3){
+                    this.ciudad = datos[0];
+                    this.codPost = datos[1];
+                    this.provincia = datos[2];
+                }
+                else if(datos.length==4){
+                    this.ciudad = datos[0];
+                    this.codPost = datos[1];
+                    this.provincia = datos[2];
+                    this.pais=datos[3];
+                }
+                
+                
+            }   
+            
+            //Permite ingresar una nueva fecha de nacimiento y confirmar si es correcta, de no serlo, devuelve el mensaje
+            // de que es incorrecta
+            this.fechaCorrecta = (fechaNueva)=>{
+                
+                if(fechaValida(fechaNueva)){
+                    this.fechaNacimiento = fechaNueva;
+                }
+                else{
+                    console.log("Fecha insertada incorrecta");
+                }
+            }
+            //Método que permite ingresar un nuevo documento y su tipo, si es correcto permite ingresarlo y si no, lo omite
+            this.nuevoDocumento = (tipoDocu, numeroDocu)=>{
+                if(validarDocumento(tipoDocu, numeroDocu, NIE, DNI)){
+                    this.tipoDoc=tipoDocu;
+                    this.numeroDoc=numeroDocu;
+                }
+                else{
+                    console.log("Tipo de Documento o Numero de documento incorrecto")
+                }
+            }
+            
+        }
+        //Creación de un objeto Persona
+        let personaUno = new Persona( "Cristian","Sanchez", "NIE", "Y7325467G","13-10-1998", "Yecla");
+        console.log(personaUno.toString());
+        //test de fecha correcta
+        personaUno.fechaCorrecta("11-11-2000");
+        //test de Nuevo Domicilio
+        personaUno.nuevoDomicilio("Yecla", "30510", "Valencia", "Peru");
+        //test de nuevo Documento
+        personaUno.nuevoDocumento("NIE", "Y7325500Z");
+        console.log(personaUno);
+        
+        //_---------------------------------------------------------------
+
+        function Policia(nombre, apellido, tipoDoc, numeroDoc, fecha, comisaria="Yecla-01", rango="Teniente"){
+            this.__proto__= new Persona(nombre, apellido, tipoDoc, numeroDoc, fecha);
+            this.comisaria = comisaria;
+            this.rango = rango;
+            this.mostrarInfo = ()=>{
+                return `Comisaria ${this.comisaria} \n Rango ${this.rango}`
+            }
+        }
+
+
+        let policiaUno = new Policia("Antonio", "Perez", "NIE", "Y7325467G", "18-09-1988");
+        
+        policiaUno.fechaCorrecta("18-10-1985");
+        policiaUno.nuevoDocumento("DNI", "54312345X");
+        policiaUno.nuevoDomicilio("Levante", "12347", "Valencia", "España");
+        console.log(policiaUno);
+    </script>
+</body>
+</html>

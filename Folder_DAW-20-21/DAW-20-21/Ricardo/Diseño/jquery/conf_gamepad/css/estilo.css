@@ -1,0 +1,57 @@
+body{
+    background-image: url("bg.jpg");
+    background-size: cover;
+}
+.flex{
+    display: flex;
+    justify-content: space-around;
+}
+
+#sortable1,
+#sortable2 {
+    border: 1px solid #eee;
+    width: 160px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 20% 0;
+    padding: 5px 0 10px 0;
+    float: left;
+    margin-right: 10px;
+}
+
+#sortable1 li{
+    margin: 10px 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 130px;
+    display: inline-flex;
+    justify-content: space-around;
+}
+#sortable2 li{
+    margin: 10px 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 130px;
+    display: inline-flex;
+    justify-content: space-around;
+}
+.img1{
+    width: 30%;
+    height: 40%;
+}
+.divpad{
+    width: 200px;
+    height: 100px;
+    margin-top: 10px;
+}
+.divflex{
+    display: flex;
+    flex-direction: column;
+}
+
+.lista{
+    list-style: none;
+}
+#dialog-form{
+    display: none;
+}

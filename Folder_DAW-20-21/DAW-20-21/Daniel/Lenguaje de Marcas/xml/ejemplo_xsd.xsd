@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="schema" type="xs:string" />
+    <xs:element name="temperatura_tierra">
+        <xs:simpleType>
+            <xs:restriction base="xs:int">
+                <xs:minInclusive value="-75"/>
+                <xs:maxInclusive value="75"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="token">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+</xs:schema>

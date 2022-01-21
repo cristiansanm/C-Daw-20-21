@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
+    </script>
+    <title>Arrays</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-4 bg-warning bg-gradient rounded">
+            <h1 class="text-center">Arrays</h1>
+        </div>
+        <hr>
+        <div class="row mt-3">
+            <div class="row mb-2">
+                <div class="col-3">
+                    <h4>Array creado: </h4>
+                </div>
+                <div class="col-7 border">
+                    <h5 id="arraycadena"></h5>
+                </div>
+                <div class="col-2">
+                    <div class="row">
+                        <button class="btn btn-danger ms-4 mt-1 w-75" id="eliminarInicio">Eliminar al Inicio</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-danger ms-4 mt-1 w-75" id="eliminarFinal">Eliminar al Final</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-8">
+                    <h2>Añadir</h2>
+                    <form id="formdos" class="mb-3">
+                        <input type="text" name="addElement" id="addElement">
+                    </form>
+                </div>
+                <div class="col-4 d-flex justify-content-around">
+                    <button class="btn btn-primary mt-1" id="addInicio">Añadir al principio</button>
+                    <button class="btn btn-primary mt-1" id="addFinal">Añadir al final</button>
+                </div>
+            </div>
+            <hr>
+            <div class="row mt-2">
+                <div class="d-flex justify-content-center"> 
+                    <div class="card text-white bg-success" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Media de Array</h5>
+                            <h4 class="card-text text-center" id="mediacadena">0</h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-3">
+            <div class="col-6">
+                <h2>Introducir una cadena separada</h2>
+                <form id="formdos">
+                    Separador:
+                    <p><input type="text" name="separador" id="separador"></p>
+                    Cadena con separador:
+                    <p><input type="text" name="nuevacadena" id="nuevacadena"></p>
+                </form>
+                <button id="addCadena">Añadir</button>
+                <button id="convertirCadena">Convertir</button>
+                <div class="row border rounded mt-2">
+                    <h5 id="cadenaConcat" class="mt-1"></h5>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row d-flex justify-content-between">
+                    <button class="btn btn-secondary mb-2" id="ordenAlfabetico">Orden alfabético</button>
+                    <button class="btn btn-secondary mb-2" id="ordenCantidad">Ordenar por cantidad de caracteres</button>
+                </div>
+                <div class="row">
+                    <div class="border rounded"> 
+                        <h5 id="resultadoArray" class="mt-1"></h5>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-3">
+            <div class="col-6 mt-2">
+                <div class="row mb-2">    
+                    <form id="formtres">
+                        Buscar:
+                        <p><input type="text" name="buscar" id="buscar"></p>
+                    </form>
+                    <button class="btn btn-success mt-2" id="buscarSubcadena">Buscar</button>
+                </div>
+                <div class="row mb-2 border rounded">
+                    <h5 class="mt-1" id="buscarContenido"></h5>
+                </div>
+            </div>
+            <div class="col-6 mt-2">
+                <div class="row">
+                    <button class="btn btn-warning mt-2" id="numeros">Obtener array de numeros</button>
+                    <button class="btn btn-warning mt-2" id="mayusculas">Obtener array convertido a mayuscula</button>
+                </div>
+                <div class="row mt-2 border rounded">
+                    <h5 class="mt-1" id="arrayConvertido"></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var arrayCadena = [];
+        var introducir = document.getElementById('insertar');
+        var formuno = document.getElementById('formuno');
+        var formdos = document.getElementById('formdos');
+        var addInicio = document.getElementById('addInicio');
+        var addFinal = document.getElementById('addFinal');
+        var eliminarInicio = document.getElementById('eliminarInicio');
+        var eliminarFinal = document.getElementById('eliminarFinal');
+        var addCadena = document.getElementById('addCadena');
+        var ordenarAlfabetico = document.getElementById('ordenAlfabetico');
+        var ordenarCantidad = document.getElementById('ordenCantidad');
+        var convertirCadena = document.getElementById('convertirCadena');
+        var buscarSubcadena = document.getElementById('buscarSubcadena');
+        var arrayNumero = document.getElementById('numeros');
+        var arrayMayuscula = document.getElementById('mayusculas');
+
+        
+        function imprimir(miArray){
+            let dato = ""; 
+            for (let i in miArray) {
+                dato += `[${i}]=> ${miArray[i]}, `;
+            }
+            document.getElementById('arraycadena').textContent = dato;
+            document.getElementById('mediacadena').textContent = media(miArray);
+        }
+        function imprimirOrden(miArray, imprimir){
+            let dato = ""; 
+            for (let i in miArray) {
+                dato += `[${i}]=> ${miArray[i]}, `;
+            }
+            imprimir.textContent = dato;
+        }
+        function media(miArray){
+            let media = miArray.reduce(function(acumulador, actualValor){return acumulador += actualValor.length}, 0);
+            return media/miArray.length;   
+        }
+        
+        addInicio.addEventListener('click', () => {
+            let datoAdd = document.getElementById('addElement').value;
+            if (datoAdd==""){
+                alert("No has introducido ningun dato");
+            }else{
+                arrayCadena.unshift(datoAdd);
+                imprimir(arrayCadena)
+                formdos.reset();
+            }
+        })
+        addFinal.addEventListener('click', ()=>{
+            let datoAdd = document.getElementById('addElement').value;
+            if(datoAdd==""){
+                alert("No has introducido ningun dato");
+            }else{
+                arrayCadena.push(datoAdd);
+                imprimir(arrayCadena)
+                formdos.reset();
+            }
+        })
+
+        eliminarInicio.addEventListener('click', ()=>{
+            if(arrayCadena.length==0){
+                alert("No hay datos en el array para borrar");
+            }else{
+                arrayCadena.shift();
+                imprimir(arrayCadena);
+            }
+        });
+        eliminarFinal.addEventListener('click', ()=>{
+            if(arrayCadena.length==""){
+                alert("No hay datos en el array para borrar");
+            }else{
+                arrayCadena.pop();
+                imprimir(arrayCadena);
+            }
+            
+        });
+        addCadena.addEventListener('click', ()=>{
+            let separador = document.getElementById('separador').value;
+            let nuevaCadena = document.getElementById('nuevacadena').value;
+            let nuevoArray = nuevaCadena.split(separador);
+            for(let e of nuevoArray){
+                arrayCadena.push(e);
+            }
+            imprimir(arrayCadena);
+        })
+        convertirCadena.addEventListener('click', ()=>{
+            let separador = document.getElementById('separador').value;
+            let nuevaCadena = "";
+            for(let e of arrayCadena){
+                nuevaCadena += e + separador;
+            }
+            document.getElementById('cadenaConcat').textContent = nuevaCadena;
+            nuevaCadena = "";
+        })
+        ordenarAlfabetico.addEventListener('click', ()=>{
+            let imprimir = document.getElementById('resultadoArray');
+            if(arrayCadena.length == 0){
+                alert('El array está vacío');
+            }else{
+                arrayCadena.sort((a, b) =>a.localeCompare(b));
+                imprimirOrden(arrayCadena, imprimir);
+            }
+        })
+        ordenarCantidad.addEventListener('click', ()=>{
+            let imprimir = document.getElementById('resultadoArray');
+            if(arrayCadena.length == 0){
+                alert('El array está vacío');
+            }else{
+                arrayCadena.sort(function(a,b){
+                    if (a.length > b.length) {
+                        return 1;
+                    }
+                    if (a.length < b.length) {
+                        return -1;
+                    }
+                    return 0;
+                });
+                imprimirOrden(arrayCadena, imprimir);
+            }
+        });
+        buscarSubcadena.addEventListener('click', ()=>{
+            let miInput = document.getElementById('buscar').value;
+            let contenido = document.getElementById('buscarContenido');
+            if(arrayCadena.includes(miInput)){
+                contenido.textContent = `${arrayCadena[arrayCadena.indexOf(miInput)]}  encontrado en [${arrayCadena.indexOf(miInput)}]`;   
+            }else{
+                contenido.textContent = "No se ha encontrado la cadena";
+            }
+            formtres.reset();
+        })
+        arrayNumero.addEventListener('click', ()=>{
+            let imprimir = document.getElementById('arrayConvertido');
+            let nuevoArray = arrayCadena.filter( element => !isNaN(element));
+            imprimirOrden(nuevoArray, imprimir);
+        })
+        arrayMayuscula.addEventListener('click', ()=>{
+            let imprimir = document.getElementById('arrayConvertido');
+            let nuevoArray = arrayCadena.map(function(element){
+               return element.toUpperCase();
+            })
+            imprimirOrden(nuevoArray, imprimir);
+        })
+        //-------------------------------------------------------
+        
+    </script>
+</body>
+
+</html>

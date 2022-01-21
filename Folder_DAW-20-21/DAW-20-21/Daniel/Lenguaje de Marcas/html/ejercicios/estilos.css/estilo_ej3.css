@@ -1,0 +1,142 @@
+.cuerpo{
+    float: left;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0 5%;
+    border: 1px solid black;
+    width: 90%;
+}
+
+.img1{
+    float: left;
+    width: 10em;
+    height:7em;
+    margin-left:2%;
+}
+.dat_empresa{
+    float: left;
+    margin:2% 5%;
+    width: 90%;
+}
+.dat_empresa p{
+    margin: 0 0;
+    text-align: center;
+}
+.texto_empresa {
+    float: left;
+    width: 20%;
+    margin-left: 23%;
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+    font-weight: 400;
+}
+fieldset{
+    border-radius: 10px;
+}
+.dat_cliente{
+    float: left;
+    width: 90%;
+    margin: 0 5%;
+}
+.dat_cliente fieldset{
+    background-color: khaki;
+}
+.doc{
+    float: right;
+    width: 20%;
+    height: 100%;
+    margin-right: 2%;
+    
+}
+.doc input[type="text"]{
+    width: 40%;
+    margin-bottom: 5%;
+}
+.doc h4{
+    margin-bottom: 2%;
+}
+#cliente{
+    
+    width: 22%;
+    margin-bottom: 2%;
+
+}
+#CIF{
+    
+    width: 20%;
+    margin-bottom: 2%;
+    margin-right: 38%;
+}
+#dir{
+    
+    width: 35%;
+    margin-bottom: 2%;
+}
+#prov{
+    width: 15%;
+    margin-bottom: 2%;
+    margin-right: 27%;
+}
+#pais{
+    width: 20%;
+    margin-bottom: 2%;
+}
+.lineas_fac{
+    margin-top: 2%;
+    float: left;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    
+
+}
+.lineas_fac fieldset{
+    background-color: bisque;
+}
+.lineas_fac table:first-of-type{
+    width: 100%;
+}
+.lineas_fac table:last-child{
+    margin-top: 2%;
+    float: right;
+    border-collapse: collapse;
+}
+table, tr, td{
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+th{
+    background-color: aqua;
+}
+.forma_pago{
+    float: left;
+    margin-top:2%;
+    margin-left: 5%;
+    width: 90%;
+}
+.forma_pago fieldset{
+    background-color: cornsilk;
+    margin-bottom: 2%;
+}
+h5{
+    text-align: center;
+}
+.boxes{
+    float: left;
+    width: 20%;
+
+}
+.boxes input{
+    margin-bottom: 5%;
+}
+.textos{
+    float: left;
+    width: 50%;
+    margin-left: 28%;
+}
+#entidad{
+    margin-right: 35%; 
+    margin-bottom: 2%;
+}

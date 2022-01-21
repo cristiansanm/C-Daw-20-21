@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog 2</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https:/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <p>Lorem ipsum dolor <a id="boton" href="https://www.google.com">sit</a> amet consectetur adipisicing elit. Laboriosam quos eum cupiditate exercitationem, magni excepturi eaque similique, quis temporibus ratione dignissimos quod voluptatibus magnam. Dolorem numquam explicabo magni eos adipisci?</p>
+    <p>Lorem ipsum dolor <a href="https://seattle.gov"></a></p>
+    <div id="modal" title="Pregunta">
+        <p><span class="ui-icon ui-icon-alert"></span>¿Quieres salir?</p>
+    </div>
+    <script>
+        $('#modal').dialog({
+            autoOpen:false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            show:{effect:"blind", duration:500},
+            hide:{effect:"explode", duration:500},
+            buttons:{
+                "Sí":function(){
+                    $(this).dialog("close");
+                    location="https://www.google.com";
+                },
+                Cancel:function(){
+                    $(this).dialog("close");
+                }
+            }
+        });
+       
+        $('#boton').click(function(e){
+            e.preventDefault();
+            $('#modal').dialog('open');
+        });
+    
+    </script>
+</body>
+</html>

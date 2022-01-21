@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function poligono_regular(lados, nombre){
+            this.lados=lados;
+            this.nombre=nombre;
+            this.mostrarInfo=()=>'Soy un '+this.nombre+' y tengo '+this.lados + ' lados \n'
+        }
+        let c=new poligono_regular(4, 'Cuadrado');
+        let t=new poligono_regular(3,'Triangulo');
+        console.log(c.mostrarInfo()," ",t.mostrarInfo())
+        let p={};
+        console.log(c instanceof poligono_regular);
+        console.log(c.__proto__);
+
+        poligono_regular.prototype.U;
+        poligono_regular.prototype.U=5;
+        poligono_regular.prototype.angulo_interior= function(){
+            return 180*(this.lados-2)/this.lados;
+        }    
+        console.log(c.angulo_interior());
+        //c.U=20;
+        console.log(c.U);
+        console.log(t.__proto__.U);
+        </script>
+</body>
+</html>

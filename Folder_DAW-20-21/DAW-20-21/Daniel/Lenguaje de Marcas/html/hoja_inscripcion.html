@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Inscripcion</title>
+    <link rel="stylesheet" href="estilos/estilo1.css" type="text/css">
+</head>
+<body>
+    <div>
+        <h1>HOJA DE INSCRIPCIÓN EN LOS CICLOS FORMATIVOS DEL GRADO SUPERIOR</h1>
+    </div>
+    
+    <form>
+        <fieldset class="fst">
+            <legend class="lgn">Datos Personales</legend>
+            <table>
+                <tr>
+                    <td class="td1"><label for="nombre">Nombre:</label></td>
+                    <td class="td1"><label for="apellidos">Apellidos:</label></td>
+                    <td><label for="dni">DNI:</label></td>
+                </tr>
+                    <td><input name="nombre" id="nombre" type="text" tabindex="1" /></td>
+                    <td> <input name="apellidos" id="apellidos" type="text" tabindex="2" /></td>
+                    <td><input name="dni" id="dni" type="text" tabindex="3" /></td>
+                </tr>
+                <tr>
+                    <td><label for="localidad">Localidad de Nacimiento:</label></td>
+                    <td><label for="provincia">Provincia:</label></td>
+                    <td><label for="nacimiento">Nacimiento:</label></td>
+                </tr>
+                <tr>
+                    <td><input name="localidad" id="localidad" type="localidad" tabindex="4" /></td>
+                    <td>
+                        <select name="provincia" id="provincia">
+                            <optgroup label="Provincia">
+                                <option value="alicante">Alicante</option>
+                                <option value="murcia">Murcia</option>
+                                <option value="valencia">Valencia</option>
+                                <option value="malaga">Malaga</option>
+                                <option value="almeria">Almeria</option>
+                                <option value="cadiz">Cadiz</option>
+                                <option value="sevilla">Sevilla</option>
+                                <option value="granada">Granada</option>
+                                <option value="girona">Girona</option>
+                                <option value="huelva">Huelva</option>
+                            </optgroup>
+                        </select>
+
+                    </td>
+                    <td><input name="nacimiento" id="nacimiento" type="date" tablainde="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><label for="direccion">Dirección:</label></td>
+                    <td><label for="codigo">Codigo Postal:</label></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input name="direccion" id="direccion" type="text" tabindex="6"/></td>
+                    <td><input name="codigo" id="codigo" type="text" tabindex="7"/></td>
+                </tr>
+            </table>
+
+        </fieldset>
+    
+        <fieldset class="fst2">
+          <legend class="lgn">Forma de Acceso</legend>
+          <ul>
+              <li>
+                <input type="radio" name="tipo" id="directa"><label for="directa">Directa:</label> 
+                <li id="list">
+                    <input type="radio" name="opcion" id="bachillerato">Bachillerato LOGSE. Modalidad:
+                    <input type="text" name="bachillerato" id="texto">
+                </li>
+                <li id="list">
+                    <input type="radio" name="opcion" id="bachiexp">Bachillerato Experimental
+                </li>
+                <li id="list">
+                    <input type="radio" name="opcion" id="cou">COU. Opción: 
+                    <input type="text" name="cou" id="texto">
+                </li>
+                <li id="list">
+                    <input type="radio" name="opcion" id="fp2">FP2
+                </li>
+                <li id="list">
+                    <input type="radio" name="opcion" id="otros">Otros (especifique):
+                    <input type="text" name="otros" id="texto">
+                </li>
+              </li>
+              <li>
+                  <input type="radio" name="tipo" id="prueba"><label for="prueba">Prueba Libre</label>
+              </li>
+          </ul>
+        </fieldset>
+        <fieldset class="fst3">
+            <legend class="lgn">Documentos Adjuntos</legend>
+            <table>
+                <tr>
+                    <td class="td2"><input type="checkbox" name="certificado" id="dni1">Fotocopia del DNI</td>
+                    <td class="td2"><input type="checkbox" name="certificado" id="certificado">Certificado Académico</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="checkbox" name="otros" id="otros1">Otros (especifique)
+                        <input type="text" name="otros" id="otr">
+                    </td>
+                </tr>
+            </table>     
+        </fieldset>
+      </form>
+      <br/>
+      <input type="submit" value="Enviar Solicitud">
+    
+</body>
+</html>

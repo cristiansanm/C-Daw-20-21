@@ -1,0 +1,124 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#cuerpo div{
+    margin: 0 10%;
+    float: left;
+}
+#div1{
+    text-align: justify;
+    font-size: 1em;
+    width:auto;
+    padding-left: 5%;
+}
+h1{
+    font-size: 2em;
+    font-weight: 400;
+}
+h3{
+    font-size:1em;
+    font-weight: 500;
+}
+.android{
+    background-color: aquamarine;
+    float: left;
+    width: 15%;
+    margin-right: 5%;
+    margin-top: 1%;
+    text-align: center;
+    border-radius: 5px;
+
+
+
+}
+.android:hover{
+    background-color:palegreen;
+    float: left;
+    width: 15%;
+    height: 2em;
+    padding: 0.5%;
+    margin-right: 5%;
+    margin-top: 1%;
+    text-align: center;
+    border-radius: 5px;
+}
+#titulo{
+    margin: 0 5%;
+    width: 90%;
+    padding-bottom:0.5em;
+    padding-top: 0.5em;
+    text-align: center;
+    float: left;
+    
+    
+}
+#nombre{
+    
+    float: left;
+    width: 20%;
+    margin-left: 40%;
+    height: 3em;
+    text-align: center;
+    
+}
+#img1{
+    margin:2% 3%;
+    float: left;
+    width: 8em;
+    height: 10em;
+    border: 1px solid black;
+    
+}
+#img2{
+    margin: 2% 10% 2% 2%;
+    float: right;
+    width: 7em;
+    height: 9em;
+    border: 1px solid black;
+}
+
+    
+p{
+    margin-right: 10%;
+    margin-left: 3%;
+}
+p::first-letter{
+    font-size: 2em;
+    font-weight: bolder;
+}
+a.android{
+    color: white;
+    font-weight: bolder;
+
+}
+a{
+    font-weight: bolder;
+    text-decoration: none;
+    color: black;
+}
+ul{
+    padding:3%;
+    margin-left: 3%;
+}
+ul li{
+    list-style-type: circle;
+}
+span{
+    font-style: italic;
+    font-weight: bolder;
+}
+hr{
+    margin: 0 10% 0 5%;
+}
+.iconos li{
+    list-style: none;
+    display: inline;
+    margin-right: 5%;
+
+    
+}
+.iconos{
+    margin-left: 40%;
+}
+
+

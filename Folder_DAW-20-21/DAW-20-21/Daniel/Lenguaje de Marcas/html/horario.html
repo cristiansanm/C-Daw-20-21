@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horario</title>
+    <link rel="icon" type="image/png" href="Img/hlogo.jpg" sizes="32x32">
+    <style>
+        *{
+            font-family:'Courier New', Courier, monospace;
+        }
+        h1{
+            font-size: 4em;
+            margin-left: 1250px;
+        }
+        table{
+            width: 2600px; 
+            height: 1000px; 
+            background-size: cover; 
+            border: 3px solid black;
+            border-collapse: collapse;
+            
+        }
+        tr, td{
+            
+            border: 1px solid black;
+            border-collapse: collapse;
+            color:black;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight:normal;
+        }
+        th{
+            border: 1px solid black;
+            border-collapse: collapse;
+            color:black;
+            text-align: center;
+            font-size: 1.7em;
+            font-weight: bolder;
+            background-color: lightgrey;
+            
+        }
+        .LM{
+            background-color:blueviolet;
+            color:aliceblue;
+            font-weight: bold;
+            
+        }
+        .DIW{
+            background-color: darkcyan;
+            color:aliceblue;
+            font-weight: bold;
+        }
+        .DWC{
+            background-color: brown;
+            color:aliceblue;
+            font-weight: bold;
+        }
+        .DWS{
+            background-color:goldenrod;
+            color:aliceblue;
+            font-weight: bold;
+        }
+        .DAW{
+            background-color:chartreuse;
+            color:aliceblue;
+            font-weight: bold;
+        }
+        a{
+            text-decoration: none;
+            color:aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Horario</h1>
+    <table>
+        <tr>
+            <td></td>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Miercoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+        </tr>
+        <tr>
+            <td>16:00-16:55</td>
+            <td class="DIW"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=31473" target="_blank">Diseño de Interfaces Web</a></td>
+            <td rowspan="2" class="DWS"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=52148" target="_blank"> Desarrollo en entorno servidor</a></td>
+            <td rowspan="2" class="DWC"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=30428" target="_blank">Desarrollo en entorno cliente</a></td>
+            <td rowspan="2" class="DAW"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=52733" target="_blank"> Despliegue de Aplicaciones Web</a></td>
+            <td class="LM"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=63450" target="_blank">Lenguaje de Marcas</a></td>
+        </tr>
+        <tr>
+            <td>16:55-17:50</td>
+            <td rowspan="2" class="DWS"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=52148" target="_blank"> Desarrollo en entorno servidor</a></td>
+            <td class="DAW"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=52733" target="_blank"> Despliegue de Aplicaciones Web</a></td>
+           
+        </tr>
+        <tr>
+            <td>17:50-18:45</td>
+            <td class="DIW" colspan="2"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=31473" target="_blank">Diseño de Interfaces Web</a></td>
+            <td class="LM" colspan="2"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=63450" target="_blank">Lenguaje de Marcas</a></td>
+            
+            
+        </tr>
+        <tr>
+            <td>18:45-19:05</td>
+            <td colspan="5" style="background-color: rgb(175, 235, 255); font-weight: bold;">Refrigerio</td>
+            
+        </tr>
+        <tr>
+            <td>19:05-20:00</td>
+            <td class="DIW" colspan="2"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=31473" target="_blank">Diseño de Interfaces Web</a></td>
+            <td class="DAW"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=52733" target="_blank"> Despliegue de Aplicaciones Web</a></td>
+            <td class="LM"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=63450" target="_blank">Lenguaje de Marcas</a></td>
+            <td class="DIW"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=31473" target="_blank">Diseño de Interfaces Web</a></td>
+        </tr>
+        <tr>
+            <td>20:00-20:55</td>
+            <td colspan="2" rowspan="2" class="DWC"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=30428" target="_blank">Desarrollo en entorno cliente</a></td>
+            <td rowspan="2" class="LM"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=63450" target="_blank">Lenguaje de Marcas</a></td>
+            <td rowspan="2" class="DWS" colspan="2"><a href="https://aulavirtual.murciaeduca.es/course/view.php?id=52148" target="_blank">Desarrollo en entorno servidor</a> </td>
+        </tr>
+        <tr>
+            <td>20:55-21:50</td>
+        </tr>
+    </table>
+</body>
+</html>

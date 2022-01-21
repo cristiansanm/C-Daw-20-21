@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cuadrado{
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background-color:green;
+            margin-left: 25%;
+            margin-right: 25%;
+            top:25%;
+            border: 2px solid black;
+            background-image: url('https://cdn.fastly.picmonkey.com/contentful/h6goo9gw1hh6/2C3VXIVGMfmU5C260BJ45t/b0a28e7611e86aa71d8767d8b8f8cca0/photo-editing.jpg_h_250?w=575&q=70');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #cartel{
+            position: absolute;
+            background-color:cadetblue;
+            padding: 1em;
+            top:0px;
+            left:0px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <p id=info>Info</p>
+    <div id="cuadrado"></div>
+    <!-- <div id="cartel"></div> -->
+    <script>
+        let dentro=document.getElementById('cuadrado');
+        /* dentro.addEventListener('mousemove', (e)=>{
+            let cartel=document.getElementById('cartel');
+            document.getElementById('info').innerHTML='x:'+e.clientX+' y:'+e.clientY;
+            cartel.style.display='block';
+            cartel.style.left=10+e.clientX+'px';
+            cartel.style.top=10+e.clientY+'px';
+            cartel.innerHTML='x:'+e.clientX+' y:'+e.clientY;
+        }); */
+        // dentro.addEventListener('mouseleave', (e)=>{
+        //     let cartel1=document.getElementById('cartel');
+        //     cartel1.style.display='none';
+        // });
+        
+        document.addEventListener('keypress', e=>{
+            if(e.key==='a'){
+                dentro.style.backgroundColor='red';
+            }
+            else if(e.key==='b'){
+                dentro.style.backgroundImage="https://2.bp.blogspot.com/-BjC4vbP1A_I/TgtlK9wndlI/AAAAAAAABYU/TS9K-GAEkIA/s1600/JOKER+%25281%2529.png";
+            }
+        });
+    </script>
+</body>
+</html>

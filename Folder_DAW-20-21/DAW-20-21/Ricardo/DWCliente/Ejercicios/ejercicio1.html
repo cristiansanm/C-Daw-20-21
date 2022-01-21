@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>refresco</title>
+</head>
+<body>
+    <!-- Hacer una clase de refrescos.
+    Con los atributos marca,sabor,cantidad,nombre,tipo.
+    Metodos: abrir, beber, llenar-->
+    
+    <script>
+        function refresco(marca, sabor, nombre, tipo, cantidad=33){
+            this.marca=marca;
+            this.sabor=sabor;
+            this.nombre=nombre;
+            this.tipo=tipo;
+            this.cantidad=cantidad;
+            this.toString=()=>"Marca: "+this.marca+", nombre: "+this.nombre+", sabor: "+this.sabor+", tipo: "+this.tipo+", cantidad: "+this.cantidad;
+            this.abierto=false;
+
+            this.abrir=()=>{
+                this.abierto=true;
+            }
+            this.beber=(cantidad_bebida)=>{
+                this.cantidad=this.cantidad>=c ? this.cantidad-c : 0;
+            }
+
+            this.llenar=(cantidad_llenar)=>{
+
+            }
+        }
+        let r1 = new refresco("Coca-Cola Co", "cola", "Coca-Cola", "Normal");
+        console.log(r1);
+        document.write(r1.toString());
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrastrar y Soltar</title>
+</head>
+<body>
+    <div id="pie">
+        <input type="file" name="file[]" id="file">
+    </div>
+    <script>
+        // Check for the various File API support.
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+    // Great success! All the File APIs are supported.
+        }else {
+            alert('The File APIs are not fully supported in this browser.');
+        }
+    </script>
+</body>
+</html>

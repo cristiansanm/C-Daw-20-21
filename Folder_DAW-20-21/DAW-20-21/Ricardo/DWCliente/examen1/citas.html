@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="citas.css">
+    <title>Gestor de Citas</title>
+</head>
+<body>
+    <div id="contenedor">
+        <div id="cabecera">
+            <h1>Gestión de Citas</h1>
+        </div>
+        <div id="tabla">
+            
+        </div>
+        <div id="contenedor_formulario">
+            <!-- <div id="confirmador">
+                <h3>¿Seguro que deseas eliminar la cita?</h3>
+                <button>Sí</button>
+                <button>No</button>
+            </div> -->
+            <div id="campo_formulario">
+                <h3>Nueva cita</h3>
+                <form id="formulario">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre">
+                    <label for="telefono">Telefono:</label>
+                    <input type="text" id="telefono">
+                    <label for="cliente">Cliente</label>
+                    <input type="radio" id="cliente">
+                    <h3 id="info"></h3>
+                    <input type="file">
+                </form>
+                <p><button id="bot_eliminar" disabled>Eliminar cita</button></p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="citas.js"></script>
+</body>
+</html>

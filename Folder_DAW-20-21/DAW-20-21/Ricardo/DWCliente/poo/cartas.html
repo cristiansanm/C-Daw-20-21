@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas</title>
+</head>
+<body>
+    <script>
+        function Cartas(palo, valor){
+            var N_PALOS=["OROS", "ESPADAS", "BASTOS", "COPAS"];
+            var N_VALORES=["as",2,3,4,5,6,7,8,9,"sota","caballo","rey"];
+            this.devolver_Palos=()=>{
+                return N_PALOS;
+            }
+            this.devolver_Valores=()=>{
+                return N_VALORES;
+            }
+            if(palo==1){
+                    this.palo=N_VALORES[0];
+                }
+                else if(palo==10){
+                    this.palo=N_VALORES[9];
+                }
+                else if(palo==11){
+                    this.palo=N_VALORES[10];
+                }
+                else if(palo==12){
+                    this.palo=N_VALORES[11];
+                }else{
+                    this.palo=(N_PALOS.includes(palo.toUpperCase()))? palo.toUpperCase():N_PALOS[Math.floor(Math.random()*4)]; 
+
+                }
+                this.valor=(N_VALORES.includes(valor))? valor:N_VALORES[Math.floor(Math.random()*12)];
+            this.dar_valor=(palo,valor)=>{
+                if(palo==1){
+                    this.palo=N_VALORES[0];
+                }
+                else if(palo==10){
+                    this.palo=N_VALORES[9];
+                }
+                else if(palo==11){
+                    this.palo=N_VALORES[10];
+                }
+                else if(palo==12){
+                    this.palo=N_VALORES[11];
+                }else{
+                    this.palo=(N_PALOS.includes(palo.toUpperCase()))? palo.toUpperCase():N_PALOS[Math.floor(Math.random()*4)]; 
+
+                }
+                this.valor=(N_VALORES.includes(valor))? valor:N_VALORES[Math.floor(Math.random()*12)];
+            }
+            this.toString=()=>this.valor+" de "+this.palo;
+        }
+        function Mazo(){
+            this.cartas_arrray=[];
+            this.añadir_todas=()=>{
+                var c= new Cartas();
+                for(p of c.devolver_Palos()){
+                    for(v of c.devolver_Valores()){
+                        this.añadir(new Cartas(p,v))
+                    }
+                }
+            }
+            this.buscar=(carta)=>{
+                for(c of this.cartas_arrray){
+                    if((carta.palo==c.palo)&&(carta.valor==c.valor)){
+                        return true;
+                    }
+
+                }
+                return false;
+            }
+            this.añadir=(carta)=>{
+                if(!this.buscar(carta)){
+                    this.cartas_arrray.push(carta);
+                }
+                
+            }
+            this.mezclar=()=>{
+                var primero;
+                var segundo;
+                for (let i=0; i<100; i++){
+                    primero=Math.round(Math.random()*this.Mazo.length);
+                    segundo=Math.round(Math.random()*this.Mazo.length);
+                    [this.Mazo[]]
+                }
+                
+            }
+            
+            this.mostrarCartas=()=>{
+                for(e of this.cartas_arrray){
+                    return "Carta "+e.toString();
+                }
+            }
+
+        }
+        var c1=new Cartas("copas",7);
+        var c2=new Cartas("bastos", 5);
+        var c3=new Cartas("oros",1);
+        c1.dar_valor("oros", "as");
+        c2.dar_valor("espadas", 5);
+        c3.dar_valor("bastos", 9);
+        console.log(c1.toString());
+        console.log(c2.toString());
+        console.log(c3.toString());
+        var m1=new Mazo();
+        m1.añadir(c1);
+        m1.añadir(c2);
+        m1.añadir(c3);
+        console.log(m1);
+        //Metodo buscar, que no se repita, ordenar
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAnimacion</title>
+    <style>
+        @keyframes amarillo {
+            /*form{
+                font-size: 10px;
+                color: black;
+            }
+            25%{
+                font-size: 15pt;
+                color:yellow;
+            }
+            50%{
+                font-size: 10pt;
+                color: green
+            }
+            75%{
+                font-size: 15pt;
+                color:blue;
+
+
+            }
+            to{
+                font-size: 10pt;
+                color: black;
+            }*/
+            from{
+                transform: translate(0px, 0);
+            }
+            25%{
+                transform: translate(500px,0);
+            }
+            50%{
+                transform: translate(300px,0);
+            }
+            75%{
+                transform: translate(100px,0);
+            }
+            to{
+                transform: translate(20px,0);
+            }
+            
+        }
+        
+        div:hover{
+            animation: amarillo 4s infinite ease-in-out;
+        }
+        div{
+            border: 1px solid black;
+            padding: 5px;
+        }
+        
+    
+    </style>
+</head>
+<body>
+    <div>
+        <h1>animacion</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, omnis quisquam! Blanditiis quas culpa molestiae beatae id corrupti nesciunt architecto esse vel fugiat, ipsum vero laboriosam repellat minima rem totam!Tempora odit officiis dolore atque recusandae, dolor nisi modi soluta voluptate itaque quis consectetur deserunt in autem fugiat dolores assumenda ipsa. Maxime laborum in, accusantium facere natus voluptatum praesentium doloribus. </p>
+    </div>
+    
+</html>

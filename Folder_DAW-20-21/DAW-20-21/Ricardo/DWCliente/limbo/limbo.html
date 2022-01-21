@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        ul, li{
+            list-style:none;
+        }
+        button {
+            background: salmon;
+            color: white;
+            border: 0;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+ 
+        button:hover {
+            background: palevioletred;
+            transition: all 0.2s;
+        }
+
+        .popup-wrapper {
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .popup {
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            background: white;
+            margin: 10% auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <label id="palabra" for="palabra">Inserte la palabra</label>
+    <input type="text" name="palabra" id="palabra">
+    <button id="boton">Enviar</button>
+    <div class="popup-wrapper">
+        <div class="popup">
+            <div class="popup-close">x</div>
+            <div class="popup-content">
+                <h3>Ingreso incorrecto</h3>
+                <p>¡Faltan letras para completar la palabra!</p>
+            </div>
+        </div>
+    </div>
+    <ul>
+        
+    </ul>
+    
+    <script>
+        var inp=document.getElementsByTagName('INPUT')[0];
+        var contador = 0;
+        var boton = document.getElementById('boton');
+        var boton = document.getElementsByTagName('button')[0];
+        var popup = document.getElementsByClassName('popup-wrapper')[0];
+        var closepopup = document.getElementsByClassName('popup-close')[0];
+        //-----------------------------------------------------------------------------------
+        document.getElementById('boton').addEventListener('click',function(){
+            
+            var label= document.getElementById('palabra');
+            var nuevoP = document.createElement('p')
+            let valorInput=inp.value;
+            nuevoP.innerHTML="Tienes que insertar 5 letras";
+            
+            var regexp = /^[a-z]{5}$/;
+            if(regexp.test(valorInput)){
+                boton.addEventListener('click', function(){
+                popup.style.display='block';
+                
+                });
+                closepopup.addEventListener('click', function(){
+                        popup.style.display='none';
+                });
+
+                // popup.addEventListener('clcik', e=>{
+                //     if(e.target.className === 'pop-wrapper'){
+                //         popup.style.display='none';
+                //     }
+                // });
+            }
+            else{
+                contador++;
+                let valor = document.createElement('li');
+                document.getElementsByTagName('ul')[0].appendChild(valor);
+                valor.textContent=inp.value;
+                if (contador == 5){
+                    let otroP = document.createElement('p');
+                    document.body.appendChild(otroP);
+                    otroP.textContent="Intentos Terminados";
+                    boton.setAttribute('disabled', true);
+                }
+            }
+            
+        });
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        a:hover{
+            /* transition: all 5s ease 1s; */
+            transition-property: font-size, color;
+            transition-duration: 4s;
+            transition-timing-function: linear;
+            transition-delay: 0s;
+            font-size: 26pt;
+            color: lime;
+            font-weight: bold;
+        }
+        .ease:hover{
+            transition: all 1.5s ease 0s;
+            height: 100px;
+            background-color: cadetblue;
+            border: 5px solid crimson;
+            box-shadow: 3px 3px 3px purple;
+        }
+        .linear:hover{
+            transition: all 1.5s linear 0s;
+            position: absolute;
+            top: 10px;
+            height: 200px;
+            width: 400px;
+            margin: 0px auto;
+            z-index: 10;
+            background-color: burlywood;
+            border: 2px solid olivedrab;
+            box-shadow: 3px 3px 3px palevioletred;
+        }
+        div{
+            margin: 2px;
+            border: 1px solid black; 
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Transiciones CSS</h1>
+    <p>Lorem ipsum dolor sit amet con <a href="#">Principal</a></p>
+    <div class="ease">Div Ease Trasicion</div>
+    <div class="linear">Div Linear Transicion</div>
+</body>
+</html>

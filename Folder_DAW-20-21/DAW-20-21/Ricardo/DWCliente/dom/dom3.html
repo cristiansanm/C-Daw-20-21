@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tamaño{
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div id="principal">
+        <p id="b1">Boton</p>
+        <p id="libro" data-tipo="Inicio del libro" data-autor="Miguel Cervantes" dato-libro="Don Quijote"> </p>
+        <h1>Lorem ipsum dolor sit amet, consectetur adipisicing.</h1>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <p id="primero">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam, facere doloremque, suscipit mollitia nisi non provident, modi quod atque quas quae quisquam voluptatum debitis. Perferendis velit animi accusamus sed illum?
+        Fugit, doloribus voluptatibus. Nobis ex enim, beatae, nihil quas natus tempora eligendi eum doloremque cum, necessitatibus alias. Facere natus maiores quod ducimus, eos doloribus libero suscipit iste dignissimos quos harum?
+        Dolor sint quia cum autem veniam harum rerum nam, eligendi possimus sed ducimus optio dicta dolorum tempora delectus quibusdam earum tempore sequi consectetur? Minus recusandae voluptas eum, a iste molestias?
+        Ducimus autem nam optio pariatur iure esse blanditiis, doloremque sunt hic natus magnam distinctio totam ea architecto laboriosam, quas quisquam odit saepe molestias provident. Ducimus minus reiciendis consequuntur ipsa similique!
+        Repudiandae ad debitis non architecto soluta ratione obcaecati! Earum praesentium suscipit cumque, beatae vero temporibus exercitationem illum debitis, nemo ad necessitatibus officia nobis nesciunt voluptate nulla totam dolores at itaque!</p>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <p id="segundo">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus ullam fuga doloremque architecto tenetur, reprehenderit itaque quo <strong>magni</strong>, beatae nobis <strong>quaerat</strong> sapiente, dolor dolorem sequi voluptas illo assumenda minima est!
+        Tempore quos illum nihil odio sapiente, ab repellat dignissimos! Rem, non atque mollitia, earum recusandae delectus adipisci ipsum quidem ad accusamus, deserunt explicabo consequuntur nam? Maiores labore facilis quae. Tenetur.
+        Modi alias eos laboriosam deserunt nobis nemo libero aspernatur consectetur, similique necessitatibus! Magnam eaque neque praesentium <strong>deserunt</strong> ipsa cupiditate, pariatur veritatis incidunt nostrum voluptate dolorem impedit hic, tempora tempore quos.</p>
+    </div>
+    <script>
+        // console.log(document.getElementById("primero").textContent);
+        // console.log(document.getElementById("segundo").innerHTML)
+        // document.getElementById("segundo").innerHTML="nuevo <strong>texto</strong> que";
+        // console.log(document.getElementsByTagName("body")[0].textContent);
+        // console.log(document.getElementsByTagName("body")[0].innerHTML)
+        /* for(negrita of document.getElementsByTagName("strong")){
+            negrita.style.color="red";
+        } */
+
+        // let cabecera2=document.querySelectorAll(".principal .coche");
+        // document.write(cabecera2[0].className);
+        // for (clase of cabecera2[0].classList){
+        //     document.write(clase, "<br>");
+        // }
+        /* Agrega una clase */
+        // cabecera2[0].classList.add("moto");
+        // // Quita una clase
+        // cabecera2[0].classList.remove("coche");
+        // // Agrega si no está la clase y quita si está la clase
+        // cabecera2[0].classList.toggle("coche");
+        // // Comprueba si una clase existe o no
+        // document.write(cabecera2[0].classList.contains("moto"));
+        // // Reemplaza una clase por otro -> ("clase reemplazada", "clase nueva que reemplaza")
+        // cabecera2[0].classList.replace("clase_a_quitar", "clase_a_reemplazar");
+
+        // document.write(document.getElementById("libro").dataset.tipo);
+        // document.write(document.getElementById("libros").dataset.libro);
+        let mi_p=document.getElementById("segundo");
+        document.getElementById("b1").addEventListener("click",()=>{
+            mi_p.innerHTML="Esto es nuevo";
+            mi_p.classList.toggle("tamaño");
+        });
+    </script>
+</body>
+</html>

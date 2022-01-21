@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax4</title>
+    <style>
+        span{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="info"></h2>
+    <script>
+        let info=document.getElementById('info');
+        //let data = new URLSearchParams("nif=Z612641Y&tipo=nie");
+        //data.append('n', 10);
+        //data.append('tipo', 'nie');
+        fetch('https://jorgesanchez.net/servicios/validarNIF.php',{
+            method: "post",
+            mode:"cors",
+            headers:{'Content-type':'application/x-www-form-urlencoded'},
+            body: "nif=X5212622V&tipo=nie"
+        })
+        .then(res=>{
+            //console.log(res.estatus);
+            //return res.text()
+            if(res.ok){
+                return res.json();
+            }else{
+                throw new Error("Los datos no llegan bien");
+            }
+        })
+        .then(respuesta=>{
+            // for (let e of listaNif){
+                // let elementoLista = document.createElement('li')
+                // lista.appendChild(elementoLista);
+                // elementoLista.innerHTML="<span>Tipo: </span>"+e.tipo+" | <span>Numero: </span>"+e.numero;
+            // }
+            if(respuesta.error.codigo==0){
+                info.style.backgroundColor="blue";
+                info.style.color="white";
+            }
+            else{
+                info.style.backgroundColor="red";
+            }
+            info.textContent=respuesta.error.mensaje;
+            
+
+        })
+        .catch(err=>{
+            console.log("error", err);
+        })
+    </script>
+</body>
+</html>

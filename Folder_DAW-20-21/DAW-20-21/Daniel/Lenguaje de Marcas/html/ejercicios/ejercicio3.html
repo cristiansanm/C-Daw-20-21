@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <link rel="stylesheet" href="estilos.css/estilo_ej3.css">
+</head>
+<body>
+    <div class="cuerpo">
+        <div class="dat_empresa">
+            <img class="img1" src="img/logo_emp.png" alt="Logo">
+            <div class="texto_empresa">
+                <p>Industrias StarFuerte</p>
+                <p>CIF: 12345678-G</p>
+                <p>C/Forjadores s/n </p>
+                <p>Isla del Hierro </p>
+                <p>Tenerife</p>
+                <p>España</p> 
+            </div>
+            <div class="doc">
+                <h4>FACTURA</h4>
+                <label for="numero">Número:</label>
+                <input type="text" name="numero" id="numero">
+                <label for="fecha">Fecha:</label>
+                <input type="date" name="fecha" id="fechas">
+            </div>
+            
+            
+        </div>
+        <div class="dat_cliente">
+            <fieldset>
+                <h3>Datos del cliente</h3>
+                <label for="cliente">Cliente: </label>
+                <input type="text" name="cliente" id="cliente" placeholder="Ingresa el nombre del cliente">
+                <label for="CIF">CIF: </label>
+                <input type="text" name="CIF" id="CIF">
+                <label for="dir">Dirección: </label>
+                <input type="text" name="dir" id="dir">
+                <label for="prov">Provincia: </label>
+                <input type="text" name="prov" id="prov">
+                <label for="pais">País:</label>
+                <input type="text" name="pais" id="pais">
+            </fieldset>
+        </div>
+        <div class="lineas_fac">
+            <fieldset>
+                <h3>Líneas de Factura</h3>
+                <table>
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>Articulo</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
+                    </tr>
+                    <tbody>
+                       <tr>
+                        <td>1</td>
+                        <td>AR001 - Armadura de oro reluciente</td>
+                        <td>350.000$</td>
+                        <td>350.000$</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>ES002 - Escudo antiproyectiles</td>
+                            <td>50.000$</td>
+                            <td>150.000$</td>
+                        </tr> 
+                    </tbody>
+                    
+                </table>
+                <table>
+                    <tr>
+                        <td>Base Imponible</td>
+                        <td>500.00$</td>
+                    </tr>
+                    <tr>
+                        <td>Descuento</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>IVA 20%</td>
+                        <td>100.000$</td>
+                    </tr>
+                    <tr>
+                        <td>Total Neto</td>
+                        <td>600.000$</td>
+                    </tr>
+                </table>
+            </fieldset>
+            
+        </div>
+        <div class="forma_pago">
+            <fieldset>
+                <h5>Forma de Pago y Datos Bancarios</h5>
+                <div class="boxes">
+                    <label for="contado">Pago al contado</label>
+                    <input type="radio" name="pago" id="contado">
+                    <label for="pago">Pago Domiciliado</label>
+                    <input type="radio" name="pago" id="domiciliado">
+                    <label for="tarjeta">Pago con Tarjeta</label>
+                    <input type="radio" name="pago" id="radio">
+               </div>
+               <div class="textos">
+                    <label for="entidad">Entidad:</label>
+                    <input type="text" name="entidad" id="entidad">
+                    <label for="cuenta">Nº de cuenta</label>
+                    <input type="text" name="cuenta" id="cuenta">
+               </div>
+            </fieldset>
+            
+        </div>
+    </div>
+</body>
+</html>

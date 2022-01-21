@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        /*const palabras=["Luis", "Ana", "Pepe", "XXX"];
+        palabras.sort((a,b)=>a.length ? a.localeCompare(b,"es"): a.length-b.length); 
+        console.log(palabras);*/
+        let conjunto_notas=new Set();
+        const notas =[1,2,,,5,6,7,,6]
+
+        notas.forEach((valor,indice)=>{
+            conjunto_notas.add(valor);
+        })
+        console.log(conjunto_notas);
+
+        let dobles=notas.map((x,i)=>(i%2==0) ? x*2 : x*3);
+
+        document.write(dobles + "<br>");
+
+        let suma = notas.reduce((acu, valor)=>acu+valor,100);
+
+        document.writeln(suma +"<br>");
+
+        let nuevo = notas.filter((x,i)=>!(i%2));
+        document.write(nuevo)
+        
+    </script>
+</body>
+</html>

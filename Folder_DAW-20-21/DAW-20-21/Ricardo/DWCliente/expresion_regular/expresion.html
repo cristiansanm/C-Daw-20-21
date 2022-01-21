@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let expNIE=/[KLXY0-9][0-9]{7}[A-Z]/;
+
+        // let expNIF=new RegExp('[A-Z][0-9]{8}[A-Z]')
+        // console.log(expNIE.test("K1234567A"));
+
+        // let e2=/ca/i;//i independiente de mayusculas y minusculas
+
+        // console.log(e2.test("alCAsa"))
+
+        // let cp=/[012345][120-9]{5}/;
+
+        // console.log(cp.test("30510"))
+
+        let frase= "Que bonito es un entierro:\n"+
+            "Con sus caballitos blancos, \n"+
+            "con sus caballitos negros. \n"+
+            "y su muertito dentor";
+        console.log(frase);
+        // while(frase.indexOf("caballitos")!=-1){
+        //     frase=frase.replace("caballitos", "burritos");
+        // }
+
+        // console.log(frase.replace(/caballitos/gi,"burritos"))//g->global, i->indiferente a mayusculas y minusculas
+        console.log(frase.replace(/su/gi,"mi"));
+    </script>
+</body>
+</html>

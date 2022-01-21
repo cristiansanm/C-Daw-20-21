@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mensaje [
+    <!ELEMENT mensaje ( email | carta) >
+      <!ELEMENT email ( cabecera, asunto?, texto+) >
+        <!ATTLIST email respuesta ( si | no ) "no" >
+            <!ELEMENT cabecera ( emisor, receptor*, fecha?) >
+            <!ELEMENT asunto ( #PCDATA) >
+            <!ELEMENT texto ( #PCDATA | saludo )* >
+              <!ELEMENT saludo ( #PCDATA ) >
+      <!ELEMENT carta ( encabezado, texto) >
+        <!ATTLIST carta respuesta ( si | no ) "no" >
+            <!ELEMENT encabezado ( emisor, receptor*, fecha) >
+              <!ELEMENT emisor ( #PCDATA ) >
+              <!ELEMENT receptor ( #PCDATA ) >
+              <!ELEMENT fecha ( #PCDATA ) >
+]>
+<mensaje>
+  <email respuesta="no">
+    <cabecera>
+      <emisor>Cristina</emisor>
+      <receptor>Abel</receptor>
+      <fecha></fecha>
+    </cabecera>
+    <asunto>Enviar la informacion</asunto>
+    <texto>
+      Muy buenas tardes, necesito que me envie la informacion necesaria. Gracias.
+      <saludo></saludo>
+    </texto>
+    <texto>
+      <saludo>Estimado señor Abel</saludo>
+      Le hablo de nuevo para que pueda confirmar la informacion necesaria. Gracias.
+    </texto>
+  </email>
+<!--  <carta respuesta="si">
+    <encabezado>
+      <emisor>Sofia</emisor>
+      <receptor>Tatiana</receptor>
+      <receptor>Cecilia</receptor>
+      <fecha>19/11/2010</fecha>
+    </encabezado>
+    <texto>
+      <saludo>Queridas Amigas</saludo>
+      Les hablo desde Japon. Ya son muchos meses sin vernos y espero que cuando vuelva, nos podamos devolver el tiempo perdido. Las quiero.
+    </texto>
+  </carta>-->
+</mensaje>

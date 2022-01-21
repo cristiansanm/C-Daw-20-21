@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies</title>
+</head>
+<body>
+    <h1>Mi web</h1>
+    <script>
+        
+        
+        if(document.cookie===false){
+            document.cookie="contador=1; nombre=ricardo";
+        }
+        else{
+            let aCookie=document.cookie.split(";");
+            for(let c of aCookie){
+                [nombre,valor]=c.split("=");
+                if(nombre=="contador"){
+                    document.cookie=("contador= "+(parseInt(valor)+1));
+                }
+            }
+        }
+        document.write(document.cookie);
+        
+    </script>
+</body>
+</html>

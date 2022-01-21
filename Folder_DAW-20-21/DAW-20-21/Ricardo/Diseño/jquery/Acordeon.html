@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery UI Button - Default functionality</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https:/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        #acordeonRE {
+            padding: 20px;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="acordeonRE">
+        <div id="acordeon">
+            <h3>Radio Group</h3>
+            <div>
+                <fieldset>
+                    <legend>Selecciona el deporte</legend>
+                    <label for="r1">Natacion</label>
+                    <input type="radio" name="r1" id="r1">
+                    <label for="r2">Running</label>
+                    <input type="radio" name="r1" id="r2">
+                    <label for="r3">Soccer</label>
+                    <input type="radio" name="r1" id="r3">
+                </fieldset>
+                <p><input type="text" title="Ejemplo de tooltip"></p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus omnis quisquam a sit recusandae
+                    doloribus, facilis tempore laudantium placeat sint harum mollitia excepturi, voluptatem facere
+                    dolore officiis perspiciatis praesentium architecto.</p>
+            </div>
+            <h3>Checkbox</h3>
+            <div>
+                <fieldset>
+                    <legend>Selecciona el deporte</legend>
+                    <label for="c1">Voley</label>
+                    <input type="checkbox" name="c1" id="c1">
+                    <label for="c2">Basket</label>
+                    <input type="checkbox" name="c2" id="c2">
+                    <label for="c3">Tennis</label>
+                    <input type="checkbox" name="c3" id="c3">
+                </fieldset>
+                <p><a href="" title="Visit Canada :)">Ir a Canada</a></p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus omnis quisquam a sit recusandae
+                    doloribus, facilis tempore laudantium placeat sint harum mollitia excepturi, voluptatem facere
+                    dolore officiis perspiciatis praesentium architecto.</p>
+            </div>
+            <h3>Seccion 3</h3>
+            <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus omnis quisquam a sit recusandae
+                    doloribus, facilis tempore laudantium placeat sint harum mollitia excepturi, voluptatem facere
+                    dolore officiis perspiciatis praesentium architecto.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        
+        $(function () {
+            $("fieldset input").checkboxradio();
+            $('#acordeonRE').resizable({
+                minHeight: 140,
+                minWidth: 200,
+                resize:function(){
+                    $('#acordeon').accordion('refresh'); 
+                }
+            });
+            $('#acordeon').accordion({
+                collapsible: true,
+                heightStyle: "fill",
+            });
+            $('input').tooltip({
+                track: true,
+                show:{
+                    effect: 'slideDown',
+                    delay:200
+                },
+                hide:{
+                    effect:'explode',
+                    delay:200
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

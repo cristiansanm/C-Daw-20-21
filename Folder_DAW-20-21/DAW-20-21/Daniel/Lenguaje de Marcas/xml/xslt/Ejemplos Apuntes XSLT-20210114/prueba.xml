@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml-stylesheet type="text/xsl" href="prueba_for.xsl" ?>
+<ciudades>
+    <ciudad>
+        <nombre>Madrid</nombre>
+        <habitantes>3500000</habitantes>
+        <otros tipo="Viviendas">200000</otros>
+    </ciudad>
+    <ciudad>
+        <nombre>Malaga</nombre>
+        <habitantes>800000</habitantes>
+        <otros tipo="Manzanas">500000</otros>
+    </ciudad>
+    <ciudad>
+        <nombre>Toledo</nombre>
+        <habitantes>50000</habitantes>
+        <otros tipo="Calles">100000</otros>
+    </ciudad>
+</ciudades>

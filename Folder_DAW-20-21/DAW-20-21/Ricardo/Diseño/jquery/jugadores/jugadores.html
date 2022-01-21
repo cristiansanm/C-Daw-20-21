@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jugador</title>
+    <link rel="stylesheet" href="jquery-ui/jquery-ui.theme.css">
+    <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+    <link rel="stylesheet" href="jquery-ui/jquery-ui.structure.css">
+    <link rel="stylesheet" href="https:/resources/demos/style.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="jquery-ui/jquery-ui.js"></script>
+
+</head>
+
+<body>
+    
+    <div class="lista">
+        <ul id="sortable1" class="connectedSortable">
+            <h2>Jugadores</h2>
+            <li class="ui-state-default">
+                <div class="contenido">Dorsal</div>
+                <div class="contenido">Nombre</div>
+                <div class="contenido">Puntos</div>
+            </li>
+        </ul>
+        <ul id="sortable2" class="connectedSortable">
+            <h2>Banco</h2>
+            <li class="ui-state-default">
+                <div class="contenido">Dorsal</div>
+                <div class="contenido">Nombre</div>
+                <div class="contenido">Puntos</div>
+            </li>
+            <div id="insertar" title="Insertar nuevo jugador"></div>
+        </ul>
+    </div>
+
+    
+    
+    <div id="dialog-form" title="Crear nuevo jugador">
+        <form>
+          <fieldset>
+            
+            <label for="dorsal">Dorsal</label>
+            <input type="text" name="dorsal" id="dorsal" value="1" class="text ui-widget-content ui-corner-all" required>
+            <label for="name">Nombre</label>
+            <input type="text" name="nombre" id="nombre" value="Jugador 1" class="text ui-widget-content ui-corner-all" required>
+            <label for="puntos">Puntos</label>
+            <input type="text" name="puntos" value="1" id="puntos" class="text ui-widget-content ui-corner-all" required>
+       
+
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+          </fieldset>
+        </form>
+    </div>
+
+    
+    <div id="dialogError" title="Error">
+        <p id="error"><span></span></p>
+    </div>
+
+    <div id="dialogAdd" title="Añadir Puntos">
+        <h4>Añadir Puntos</h4>
+        <form>
+
+            <button class="ui-button ui-widget ui-corner-all" id="pm">Añadir Manualmente</button>
+            <div id="pManual">
+                
+            </div>
+            <button class="ui-button ui-widget ui-corner-all" id="ps">Añadir Por Puntos</button>
+            <div id="pSelect">
+            
+            </div>
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </form>
+    </div>
+    
+
+    <script>
+        $(function () {
+            
+            var dialog, dialogError, dialogPuntos, form, dialogEditar,
+            dorsal=$('#dorsal'),
+            nombre = $('#nombre'),
+            puntos = $('#puntos'),
+            expreg=/^[a-zA-Z]+$/,
+            expreg1=/^[0-9]+$/;
+
+            $('#dialogAdd').css('display', 'none');
+            
+            $(document).tooltip();
+            
+            $("#sortable1, #sortable2").sortable({
+                connectWith: ".connectedSortable",
+            }).disableSelection();
+            
+            $('#pm').on('click', function(event){
+                event.preventDefault();
+                $('#pSelect').children().remove();
+                $('#pManual').append('<input type="text" name="puntoManual" id="puntoManual" class="text ui-widget-content ui-corner-all">')
+            })
+
+            $('#ps').on('click', function(event){
+                event.preventDefault();
+                $('#pManual').children().remove();
+                $('#pSelect').append('<fieldset>'+
+                    '<label for="punto1">1</label>'+
+                    '<input type="radio" name="pRadio" id="punto1" value="1">'+
+                    '<label for="punto2">2</label>'+
+                    '<input type="radio" name="pRadio" id="punto2" value="2">'+
+                    '<label for="punto3">3</label>'+
+                    '<input type="radio" name="pRadio" id="punto3" value="3">'+
+                '</fieldset>')
+                $('#pSelect input').checkboxradio();
+            });
+            
+            
+            $('#verInput input').checkboxradio();
+
+
+            function addUser(){
+                let msgerror="";
+                if(!dorsal.val().match(expreg1))
+                    msgerror="<br>Error en el dorsal"
+                if(!nombre.val().match(expreg))
+                    msgerror += "<br>Error en el Nombre"
+                if(!puntos.val().match(expreg1))
+                    msgerror += "<br>Error en puntos"
+
+
+                if(msgerror == ""){
+                    $('#sortable2 li:last-of-type').after('<li class="editar" title="Editar Puntos"><div class="contenido">' + dorsal.val() 
+                        + '</div>' + '<div class="contenido">' + nombre.val()
+                            + '</div>' +'<div class="contenido punto">' + puntos.val()
+                                + '</div>');
+                        dialog.dialog('close');
+                    
+                    $('.editar').on('dblclick', function(){
+                        let cambio = $(this).children('.punto');
+                        let puntos = $(this).children('.punto').text();
+                        let form2;
+                        puntos = parseInt(puntos);
+
+                        function addPuntos(){
+                            let msgerror2 = "";
+                            let puntoM = $('#puntoManual').val();
+                            let puntouno = $('#punto1:checked').val();
+                            let puntodos = $('#punto2:checked').val();
+                            let puntotres = $('#punto3:checked').val();
+
+                            if(puntoM == undefined && puntouno == undefined && puntodos == undefined && puntotres == undefined){
+                                msgerror2 = "No estás insertando ningún punto";
+                            }
+                            
+                            if(puntoM!=undefined){
+                                if(puntoM == "" ){
+                                    msgerror2 = "No estás insertando ningún punto";
+                                }
+                                else if(!puntoM.match(expreg1)){
+                                    msgerror2 = "No estás ingresando los números correctos para sumar";
+                                }
+                            }
+
+                            if(msgerror2 == "" ){
+                                
+                                if(puntoM != undefined && puntoM != ""){ 
+                                    puntoM = parseInt(puntoM);
+                                    puntos = puntos + puntoM;
+                                    cambio.text(puntos);
+                                    dialogPuntos.dialog('close');
+                                }
+                                else{
+                
+                                    if(puntouno != undefined){
+                                        puntouno = parseInt(puntouno);
+                                        puntos = puntos + puntouno;
+                                        cambio.text(puntos);                                                       
+                                        dialogPuntos.dialog('close');
+                                    }
+                                    else if(puntodos != undefined){
+                                        puntodos = parseInt(puntodos);
+                                        puntos = puntos + puntodos;
+                                        cambio.text(puntos);
+                                        dialogPuntos.dialog('close');
+                                    }
+                                    else if(puntotres != undefined){
+                                        puntotres = parseInt(puntotres);
+                                        puntos = puntos + puntotres;
+                                        cambio.text(puntos);
+                                        dialogPuntos.dialog('close');
+                                    }
+                                }
+                            }
+                            else{
+                                $("#error").find("span").html(msgerror2);
+                                dialogError.dialog('open');
+                            }
+                            
+                        }
+                        
+                        
+                        dialogPuntos = $('#dialogAdd').dialog({
+                            resizable: false,
+                            autoOpen: false,
+                            height: 400,
+                            width: 350,
+                            modal: true,
+                            buttons: {
+                                "Añadir": addPuntos,
+                                "Cancelar": function(){
+                                    dialogPuntos.dialog("close");
+                                }
+                            },
+                        });
+
+                        form2 = dialogPuntos.find("form").on('submit', function(event){
+                            event.preventDefault();
+                            addPuntos();
+                        }) 
+                        
+                        dialogPuntos.dialog('open');
+                        
+                        
+
+                    });
+                    
+                }
+
+                else{
+                    $("#error").find("span").html(msgerror);
+                    dialogError.dialog('open');
+                }
+                
+                
+            }
+            
+
+            dialogError = $("#dialogError").dialog({
+                resizable: false,
+                autoOpen: false,
+                height: 250,
+                width: 250,
+                buttons: {
+                    "Cerrar": function(){
+                        dialogError.dialog("close");
+                    }
+                }
+            });
+
+            dialog = $("#dialog-form").dialog({
+                resizable: false,
+                autoOpen: false,
+                height: 400,
+                width: 350,
+                modal: true,
+                buttons: {
+                    "Crear": addUser,
+                    
+                    "Cancelar": function(){
+                        dialog.dialog("close");
+                    }
+                    
+                },
+                close: function(){
+                    $('form')[1].reset();
+                }
+            });
+            form = dialog.find("form").on("submit", function (event){
+                event.preventDefault();
+                addUser();
+            })
+            
+            $('#insertar').on('click', function(){
+                dialog.dialog("open");
+                $('form')[1].reset();
+            });
+
+            
+            
+        });
+    </script>
+</body>
+
+</html>

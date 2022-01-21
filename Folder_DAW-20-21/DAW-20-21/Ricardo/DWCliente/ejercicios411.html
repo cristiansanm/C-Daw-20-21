@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 1.Ordenar un array de palabras en orden inverso
+                a. El usuario introducirá las palabras hasta que se introduzca la cadena vacía o se pulse cancelar.
+                b. Se eliminarán las palabras repetidas.
+                3. Se ordenará en español pero orden inverso.
+            2. Crear un mapa con repeticiones de array
+                a. Crear una función que reciba un array de palabras
+                b. La función devolverá un mapa dónde cada clave será la palabra y el valor será el número de veces que aparece repetida.
+                c. Hacer una página web que lea palabras hasta que el usuario cancele o dele el cuadro en blanco y mostraremos la información del mapa en la máquina.
+            3. Hacer una función que calcule la seria Fibonacci.
+        */
+        //ejericico 1
+        /*const palabras=[];
+        var llenar=prompt("Ingresa las palabras");
+        console.log(llenar);
+        while(llenar!=null&&llenar!=""){
+            palabras.push(llenar);
+            llenar=prompt("Ingresa las palabras");
+        }
+        document.write(palabras + "<br>");
+        let conjunto= new Set();
+        palabras.forEach(element => {
+            conjunto.add(element);
+        });
+        console.log(conjunto);
+        let newpalabras=[]
+        conjunto.forEach(elemento=>{
+            newpalabras.push(elemento);
+        });
+       
+        newpalabras.sort((b,a)=>a.localeCompare(b,"es"));
+        document.write(newpalabras);*/
+    
+        //ejercicio2
+        const repeticiones=["hola","hola","soy","cristian","cristian","esto","es", "un", "esto", "array"];
+        var mapa = new Map();
+        function insertar(repeticiones){
+            var veces=0;
+            repeticiones.forEach(element => {
+                if(mapa.has())
+                mapa.set(element,)
+            });
+        }
+    </script>
+</body>
+</html>
